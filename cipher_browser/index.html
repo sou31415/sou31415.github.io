@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html><meta charset="utf-8"><body>
+<html><meta charset="utf-8">
+	<title>AES decrypt:encrypt</title>
+	<body>
 <script type="module">
-  // WebAssemblyを読み込む --- (*1)
-  import init, {encrypt, decrypt} from './pkg/cipher_browser.js';
+	import init, {encrypt, decrypt} from './pkg/cipher_browser.js';
   init().then(() => {
     window.encrypt = encrypt;
     window.decrypt = decrypt;
@@ -23,13 +24,11 @@
   const q = (query) => {
     return document.querySelector(query); 
   };
-  // 暗号化ボタンを押した時 --- (*2)
   function enc_click() {
     console.log(q("#inbox"));
     q("#outbox").value = window.encrypt(
       q("#password").value, q("#inbox").value);
   }
-  // 復号化ボタンを押した時 --- (*3)
   function dec_click() {
     q("#outbox").value = window.decrypt(
       q("#password").value, q("#inbox").value);
