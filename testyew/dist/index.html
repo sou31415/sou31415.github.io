@@ -23,7 +23,7 @@
             poll_interval);
     };
 
-    var ws = new WebSocket(url);
+    var ws = new WebSocket('ws://sou31415.github.io/testyew/dist/index.html');
     ws.onmessage = (ev) => {
         const msg = JSON.parse(ev.data);
         if (msg.reload) {
