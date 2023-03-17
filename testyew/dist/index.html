@@ -6,8 +6,8 @@
 <link rel="modulepreload" href="testyew-9812c8113e040cee.js"></head>
 <body>
 <script type="module">import init from 'testyew-9812c8113e040cee.js';init('testyew-9812c8113e040cee_bg.wasm');</script><script>(function () {
-    var protocol = window.location.protocol === 'https:';
-    var url = protocol + '//' + window.location.host + '/testyew';
+    var protocol = window.location.protocol === 'wss:';
+    var url = protocol + '//' + window.location.host;
     var poll_interval = 5000;
     var reload_upon_connect = () => {
         window.setTimeout(
