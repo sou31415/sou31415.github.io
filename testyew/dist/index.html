@@ -5,7 +5,7 @@
 <link rel="preload" href="testyew-9812c8113e040cee_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
 <link rel="modulepreload" href="testyew-9812c8113e040cee.js"></head>
 <body>
-<script type="module">import init from 'testyew-9812c8113e040cee.js';init('testyew-9812c8113e040cee_bg.wasm');</script><script>(function () {
+<script type="module">import init from '/testyew-9812c8113e040cee.js';init('/testyew-9812c8113e040cee_bg.wasm');</script><script>(function () {
     var protocol = window.location.protocol === 'wss:';
     var url = protocol + '//' + window.location.host;
     var poll_interval = 5000;
@@ -23,7 +23,7 @@
             poll_interval);
     };
 
-    var ws = new WebSocket('ws://sou31415.github.io/testyew/dist/index.html');
+    var ws = new WebSocket('ws://sou31415.github.io/testyew/dist');
     ws.onmessage = (ev) => {
         const msg = JSON.parse(ev.data);
         if (msg.reload) {
