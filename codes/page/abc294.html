@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>ABC294 log</title>
+</head>
+<body>
+	<h2><a href="../index.html">AtCoder Stack</a></h2>
+	<h3><a href="https://atcoder.jp/contests/abc294/tasks/abc294_a">A - Filter</a></h3>
+	<font size="4">
+		Iteratorゴリ押し。a.iter().filter(|x| x % 2 == 0)でfor文をまわして出力する。<br>
+		<a href="https://atcoder.jp/contests/abc294/submissions/39980541">submission</a><br>
+	</font>
+	<h3><a href="https://atcoder.jp/contests/abc294/tasks/abc294_b">B - ASCII Art</a></h3>
+	<font size="4">
+		お馴染みの'A' as u8 - 1芸。a[i][j]を足してcharにして出力する。0の時.を出力する、改行の位置に気をつける。<br>
+		<a href="https://atcoder.jp/contests/abc294/submissions/39849252">submission</a>
+	</font>
+	<h3><a href="https://atcoder.jp/contests/abc294/tasks/abc294_c">C - Merge Sequences</a></h3>
+	<font size="4">
+		AはAで、BはBでそれぞれusizeの配列を持たせる。全ての値を入れたベクタに一つずつpushしていき、最後にsortする。何番目に含まれているかはベクタのbinary_search(&K)で返されてきたResult型の値をunwrapすることにより得られる。Kが含まれていることは自明なのでif letを使って慎重にならなくても良い、という判断。全体の計算量は多く見積もってもせいぜいO((N+M)+2(N+M)log(N+M))程度であり、じゅうぶん高速に動作する。binary_searchで得られた値は0-based indexで返されるため1-based indexにするために+1することを忘れてはいけない。<br>
+		<a href="https://atcoder.jp/contests/abc294/submissions/39855519">submission</a>
+	</font>
+	<h3><a href="https://atcoder.jp/contests/abc294/tasks/abc294_d">D - Bank</a></h3>
+	<font size="4">
+		呼ばれてない人をqueで管理して呼ばれたがいってない人をvecで管理し、いった人をbinary_searchを使ってO(logN)でindexを探索し、探索したindexの要素をO(N)消す、ということをしていたらTLEになってしまった。結局HashSetをB木で管理、実装しているBTreeSetを使うことによって実装,ACできた。呼ばれてない人をqueで管理するのはそのままに、いってない人をBTreeSetで管理した。1の時que.pop_front().unwrap()したものをBTreeSetにinsert、2の時xをUsize1で取得し、remove(&x)でいってない人の中からxを消す、3の時BTreeSet.iter().next().unwrap()でBTreeSetの中で最も小さい人を取り出せる。0-based indexを1-based indexにするために+1する。<br>
+		<a href="https://atcoder.jp/contests/abc294/submissions/39906118">submission</a><br>
+	</font>k
+</body>
