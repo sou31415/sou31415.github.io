@@ -26,5 +26,5 @@
 	<font size="4">
 		呼ばれてない人をqueで管理して呼ばれたがいってない人をvecで管理し、いった人をbinary_searchを使って<i>O(logN)</i>でindexを探索し、探索したindexの要素を<i>O(N)</i>で消す、ということをしていたらTLEになってしまった。結局HashSetをB木で管理、実装しているBTreeSetを使うことによって実装,ACできた。呼ばれてない人をqueで管理するのはそのままに、いってない人をBTreeSetで管理した。1の時que.pop_front().unwrap()したものをBTreeSetにinsert、2の時xをUsize1で取得し、remove(&x)でいってない人の中からxを消す、3の時BTreeSet.iter().next().unwrap()でBTreeSetの中で最も小さい人を取り出せる。0-based indexを1-based indexにするために+1する。<br>
 		<a href="https://atcoder.jp/contests/abc294/submissions/39906118">submission</a><br>
-	</font>k
+	</font>
 </body>
