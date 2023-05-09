@@ -1,11 +1,10 @@
 p {
     margin: 3;
-    color:#849AB8
     padding: 3;
     border: 0;
     font: inherit;
     font-size: 100%;
-    vertical-align:baseline
+    vertical-align:baseline;
 }
 .msr_box03 {
   background-color: #1B73BA;
@@ -32,7 +31,7 @@ p {
 }
 .msr_box03 p {
   background-color: #FFFFFF;
-  color:#849AB8
+  color:#849AB8;
   font-size: 13px;
   line-height: 1.6;
   padding: 8px;
