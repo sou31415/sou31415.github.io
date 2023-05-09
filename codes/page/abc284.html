@@ -2,27 +2,28 @@
 <head>
 	<meta charset="utf-8">
 	<title>ABC284 log</title>
+	<link media="all" href="../style.css" rel="stylesheet"/>
 </head>
 <body>
 	<h2><center><a href="../index.html">AtCoder Stack</a></center></h2>
 	<h3><a href="https://atcoder.jp/contests/abc284/tasks/abc284_a">A - Sequence of Strings</a></h3>
-	<font size="4">
+	<et>
 		入力された文字列を入力された順番とは逆順で出力してください、という問題。文字列が入ったベクタを.reverse()で反転させて出力した。そのままの実装。<br>
 		<a href="https://atcoder.jp/contests/abc284/submissions/38987154">submission</a><br>
-	</font>
+	</et>
 	<h3><a href="https://atcoder.jp/contests/abc284/tasks/abc284_b">B - Multi Test Cases</a></h3>
-	<font size="4">
+	<et size="4">
 		T個のテストケースが与えられてそれぞれのテストケースのなかで奇数の個数を出力する問題。テストケースが入ったベクタaに対してa.iter().filter(|x| x%2==1).count()をすれば奇数の個数を取り出せるためそれを出力すれば良い。<br>
 		<a href="https://atcoder.jp/contests/abc284/submissions/37946625">submission</a><br>
-	</font>
+	</et>
 	<h3><a href="https://atcoder.jp/contests/abc284/tasks/abc284_c">C - Count Connected Components</a></h3>
-	<font size="4">
+	<et size="4">
 		N頂点M辺のグラフが与えられ、幾つの塊があるか、という問題。UnionFindを使うところまでは容易に想像がつくが、塊の数をどう表現すれば良いか、少し考えた。結果、1からNまでの点のparent属性をHashSetにcollectする。そのsetの要素数が塊の数と同義になるためset.len()で出力した。<br>
 		<a href="https://atcoder.jp/contests/abc284/submissions/40109989">submission</a>
-	</font>
+	</et>
 	<h3><a href="https://atcoder.jp/contests/abc284/submissions/37958607">D - Happy New Year 2023</a></h3>
-	<font size="4">
+	<et size="4">
 		p^2qで表せる数の素因数分解をする、という問題。ここで引っかかってくるのが制約でNが10^19ほどと非常に大きいため愚直に解くと間に合わない。そこで数がp^2qであることに着目するとmin(p,q)はNの3分の1乗ほどしか無いことがわかる。よって試し割りすれば良いのはせいぜい10^6ほどで良いためよほど重い処理でない限りは時間内に解くことができる。試し割して割れたらloopを抜けてその数がpであるのかqであるのかで処理を分ける必要がある。<br>
 		<a href="https://atcoder.jp/contests/abc284/submissions/37958607">submission</a><br>
-	</font>
+	</et>
 </body>
