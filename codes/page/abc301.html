@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>ABC301 log</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<center><h2><a href="../index.html">AtCoder Stack</a></h2></center>
+	<ul class="accordion-area">
+		<li>
+			<section>
+				<h3 class="title">A - Overall Winner</h3>
+				<div class="box">
+					<p>
+					<a href="https://atcoder.jp/contests/abc301/tasks/abc301_a">Problem</a><br>
+					Stringで受け取ってTとAの数が多い方を出力する。同じの場合は最後の文字ではない文字を出力する。<br>
+					<a href="https://atcoder.jp/contests/abc301/submissions/41390463">A:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">B - Fill the Gaps</h3>
+				<div class="box">
+					<p>
+					<a href="https://atcoder.jp/contests/abc301/tasks/abc301_b">Problem</a><br>
+					実際に配列に<i>insert</i>する必要はなく、<i>N-1</i>回繰り返す。A_iとA_i+1の差を埋めるように出力する。Rustの範囲は半開区画なので添字に気をつける。<br><a href="https://atcoder.jp/contests/abc301/submissions/41383050">B:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">C - AtCoder Cards</h3>
+				<div class="box">
+					<p>
+					<a href="https://atcoder.jp/contests/abc301/tasks/abc301_c">Problem</a><br>
+					Zobrist Hashのようなことをしようとしたが思い付かなかったため工夫して解いた。これは@がatcoderに置き換えることができる、つまりatcoder以外の文字の集合が一致していなかったらNoであることがわかる。よってatcoder@以外の文字列を配列で管理する。atcoderは別で配列でもち、@は回数をusizeでもつ。先ほど述べたように、atcoder以外の文字の集合が一致していなかったらNoを出力し、return,一致していたら<i>S</i>と<i>T</i>に出てきたatcoderの文字が出てきた回数を文字ごとに差分をとって、その合計が@の回数を上回っていればNo,@の回数以下であればYesである。これは@がatcoderの文字を全て置き換えることができるかどうかを判定したものであり、少々の問題文の読み替え、考察が必要だった。<br><a href="https://atcoder.jp/contests/abc301/submissions/41385258">C:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
+	</ul>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="./index.js"></script>
+</body>
