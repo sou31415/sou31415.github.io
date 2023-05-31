@@ -13,7 +13,7 @@
 				<h3 class="title">A - Double Click</h3>
 				<div class="box">
 					<p>
-					<a href="https://atcoder.jp/contests/abc296/tasks/abc297_a">Problem</a><br>
+					<a href="https://atcoder.jp/contests/abc297/tasks/abc297_a">Problem</a><br>
 					0~n-1まで探索。i+1番目-i番目がDより小さければi+1番目の数値を出力してreturn。最後に-1を出力する。余談だが、この当てはまらなければ-1を出力する、といった類の問題は今までならば結果を出力したかどうかをジャッジするためのbool型変数を作っていたがRustだとreturnでプログラムを終了させることができるためよりシンプルに記述できることが身についてきている。<br>
 	<a href="https://atcoder.jp/contests/abc297/submissions/40454747">A:submission</a>
 					</p>
@@ -25,7 +25,7 @@
 				<h3 class="title">B - chess960</h3>
 				<div class="box">
 					<p>
-					<a href="https://atcoder.jp/contests/abc296/tasks/abc297_b">Problem</a><br>
+					<a href="https://atcoder.jp/contests/abc297/tasks/abc297_b">Problem</a><br>
 					効率的な方法が思いつかず、かなり冗長な処理になった。(usize,usize)でBが出たindexとRが出たindexを管理した。また、BとRが出た回数をusizeでもち...といった具合に、大量の変数を散らかしてしまった。実装方法はそのままだが一つ記述するとするならBが出たindexの偶奇の不一致をどう判定するかで、着目したのは(偶数-偶数)も(奇数-奇数)も偶数になる、という性質だった。これにより、(B1-B0)が奇数なら偶奇が不一致、ということになるため少し短くなる。<br>    
 	<a href="https://atcoder.jp/contests/abc297/submissions/40465831">B:submission</a><br>
 	<a href="https://atcoder.jp/contests/abc297/submissions/41280601">B:submission(CodeGolf)</a>
