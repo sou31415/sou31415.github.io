@@ -41,6 +41,17 @@
 				</div>
 			</section>
 		</li>
+		<li>
+			<section>
+				<h3 class="title">D - Unicyclic Components</h3>
+				<div class="box">
+					<p><a href="https://atcoder.jp/contests/abc292/tasks/abc292_d">Problem</a><br>
+					連結成分についての問題のためUnionFindを用いた。UFとは別でグラフを用意しておき、各辺で無向グラフを構築していく。UnionFindで連結成分に含まれる点の数を数え、無向グラフa[i]の要素数が点iから派生する辺の本数を表しているためinto_labelingで生成したvecを二つ用意し、一つは座標圧縮用で持っておく。あとはinto_labelingで生成したvecに対して辺の本数を数えて足し上げ、無向グラフを構築するためにa,bの2点から辺を派生させているため2で割った値が連結成分に含まれる辺の本数となる。あとはlabelingに対してfilterで各parent属性の個数と辺の本数が一致しているかを判定する。<br>
+					<a href="https://atcoder.jp/contests/abc292/submissions/42070688">D:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
 	</ul>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<script src="./index.js"></script>
