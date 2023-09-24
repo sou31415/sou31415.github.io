@@ -125,3 +125,57 @@ cap {
 	margin-right: 3%;
   }
 }
+@media (min-width:701px) {
+  .container {
+    display: flex;
+    align-items: center;
+    width: 300px; /* 幅を指定 */
+  }
+  .imageleft {
+    max-width: 45%;
+    height: auto;
+	margin-right: 10px;
+	float: left;
+  }
+  .imageright {
+    max-width: 45%;
+	margin-left:5px;
+    height: auto;
+	float: right;
+  }
+  body {
+    margin: 0;
+	padding: 20px;
+  }
+  .box {
+	float: left;
+	margin-right: 15px;
+	width: 150px;
+	height: 100px;
+	border-radius: 5px;
+    background-color: rgb(207, 232, 220);
+	padding: 1em;
+  }
+
+  .text {
+  }
+
+  h3 {
+    color: #96b6ff;
+	font-size: 18px;
+  }
+  p {
+	width:95%;
+    font-size:15px;
+  }
+  .box:nth-child(even) {
+	flex-direction: row-reverse;
+  }
+  .box:nth-child(even) .text {
+	text-align: right;
+  }
+  .box:nth-child(even) .pict {
+	margin-left: 0;
+	margin-right: 3%;
+  }
+}
