@@ -106,7 +106,7 @@ a:hover {
 	cap {
 		text-align: center;
 		color: #ffffff;
-		font-size: 2.5em;
+		font-size: 2em;
 		line-height:1.15em;
 		letter-spacing:0.1em;
 		display: block;
@@ -128,7 +128,7 @@ a:hover {
 	}
 	p {
 		width:95%;
-		font-size:3em;
+		font-size:2em;
 		letter-spacing: 0.08em;
 		line-height: 1.2em;
 	}
