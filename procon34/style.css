@@ -51,7 +51,6 @@ a:hover {
 	  color: #e0f82f;
 	}
 	.image {
-	  min-width: 100px;
 	  height: auto;
 	  margin-right: 10px;
 	}
@@ -73,11 +72,10 @@ a:hover {
 	body {
 	  padding: 10% 10%;
 	}
-	.box {
-	  display: block;
+	div.box {
+	  display: flex;
 	  width:100%;
-	  max-height: 1080px;
-	  width: auto;
+	  height:auto;
 	}
 	h3 {
 	  color: #96b6ff;
@@ -102,7 +100,7 @@ a:hover {
 		font-size: 4em;
 	}
 	img {
-		width:50%;
+		width:100%;
 		height: auto;
 	}
 	figure.side {
@@ -113,6 +111,7 @@ a:hover {
 		text-align: center;
 		color: #ffffff;
 		font-size: 3em;
+		line-height:1.15em;
 	}
 
 	cap {
@@ -125,12 +124,6 @@ a:hover {
 	}
 	body {
 		padding: 10% 10%;
-	}
-	.box {
-		display: block;
-		width:100%;
-		max-height: 1080px;
-		width: auto;
 	}
 	h3 {
 		color: #96b6ff;
@@ -151,5 +144,10 @@ a:hover {
 		line-height: 1.2em;
 		display:inline-block;
 		vertical-align:bottom;
+	}
+	div.box {
+	  display: flex;
+	  width:100%;
+	  height:auto;
 	}
 }
