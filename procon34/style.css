@@ -68,7 +68,6 @@ a:hover {
 	  letter-spacing:0.1em;
 	  line-height:1.1em;
 	}
-
 	body {
 	  padding: 5% 5%;
 	}
@@ -80,10 +79,6 @@ a:hover {
 	h3 {
 	  color: #96b6ff;
 	  font-size: 18px;
-	}
-	p {
-	  width:95%;
-	  font-size:15px;
 	}
 	p.side_text {
 		display:inline-block;
@@ -123,17 +118,17 @@ a:hover {
 		display: block;
 	}
 	body {
-		padding: 10% 10%;
+		padding: 5% 5%;
 	}
 	h3 {
 		color: #96b6ff;
-		font-size: 3em;
+		font-size: 2em;
 		letter-spacing:0.08em;
 		line-height:1.1em;
 	}
 	p.side_text {
 		width:95%;
-		font-size:2em;
+		font-size:1.5em;
 		letter-spacing: 0.08em;
 		line-height: 1.2em;
 		display:inline-block;
