@@ -38,10 +38,13 @@ a {
 a:hover {
   color: #24c8db;
 }
-@media (max-width:500px) {
+@media (max-width:768px) {
 	img {
 	  width:50%;
 	  height: auto;
+	}
+	img.icon {
+		width:90px;
 	}
 	figure.side {
 		display:inline-block;
@@ -88,15 +91,14 @@ a:hover {
 	}
 }
 
-@media (min-width:501px) {
+@media (min-width:769px) {
 	h1 {
 		text-align: center;
 		color: #e0f82f;
 		font-size: 4em;
 	}
-	img {
-		width:80%;
-		height: auto;
+	img.icon {
+		width:120px;
 	}
 	figure.side {
 		display:inline-block;
@@ -126,7 +128,7 @@ a:hover {
 		letter-spacing:0.08em;
 		line-height:1.1em;
 	}
-	p.side_text {
+	p{
 		width:95%;
 		font-size:1.5em;
 		letter-spacing: 0.08em;
