@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ガラスモーフィズムデザインの完全ガイド - Tech Blog</title>
+    <link rel="stylesheet" href="blog-style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー（同じ） -->
+        <header class="blog-header">
+            <div class="header-content">
+                <div>
+                    <h1 class="blog-title">Tech Blog</h1>
+                    <p class="blog-subtitle">プログラミングとデザインの情報を発信</p>
+                </div>
+                <nav class="header-nav">
+                    <a href="blog.html" class="nav-link">ホーム</a>
+                    <a href="#" class="nav-link">カテゴリ</a>
+                    <a href="#" class="nav-link">アーカイブ</a>
+                    <a href="#" class="nav-link">お問い合わせ</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- 記事コンテンツ -->
+        <div class="main-content">
+            <article class="post-content">
+                <div class="post-meta">
+                    <span class="post-category">プログラミング</span>
+                    <span>2025年6月15日</span>
+                    <span>👁️ 1,234 views</span>
+                </div>
+                <h1>ガラスモーフィズムデザインの完全ガイド</h1>
+                
+                <img src="https://via.placeholder.com/800x400/34495e/ffffff?text=Glassmorphism+Guide" alt="ガラスモーフィズムのイメージ" style="width: 100%; margin: 20px 0;">
+                
+                <p>ガラスモーフィズム（Glassmorphism）は、近年のWebデザインにおいて注目を集めているデザイントレンドの一つです。透明感のあるガラスのような質感を表現することで、モダンで洗練された印象を与えることができます。</p>
+                
+                <h2>ガラスモーフィズムとは</h2>
+                <p>ガラスモーフィズムは、背景のぼかし効果と半透明の要素を組み合わせることで、まるでガラスが重なっているような視覚効果を生み出すデザイン手法です。</p>
+                
+                <blockquote>
+                    「ガラスモーフィズムの美しさは、その繊細な透明感と深度感にあります。適切に実装されれば、ユーザーに上質な体験を提供できるでしょう。」
+                </blockquote>
+                
+                <h2>実装方法</h2>
+                <p>CSSを使用した基本的な実装例をご紹介します：</p>
+                
+                <pre><code>.glass-element {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+}</code></pre>
+                
+                <h3>重要なプロパティ</h3>
+                <ul style="color: rgba(255, 255, 255, 0.8); padding-left: 20px;">
+                    <li><code>backdrop-filter</code>: 背景のぼかし効果</li>
+                    <li><code>background</code>: 半透明な背景色</li>
+                    <li><code>border</code>: 境界線の設定</li>
+                </ul>
+                
+                <p>このテクニックを使用することで、現代的で美しいUIを作成することができます。</p>
+            </article>
+            
+            <!-- サイドバー（同じ構造） -->
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">🔍 検索</h3>
+                    <input type="text" class="search-input" placeholder="記事を検索...">
+                </div>
+                <!-- 他のウィジェットも同様 -->
+            </aside>
+        </div>
+
+        <!-- フッター（同じ） -->
+        <footer class="blog-footer">
+            <p>&copy; 2025 Tech Blog. All rights reserved. | デザイン: ガラスモーフィズム</p>
+        </footer>
+    </div>
+</body>
+</html>

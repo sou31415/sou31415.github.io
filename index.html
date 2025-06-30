@@ -1,49 +1,147 @@
 <!DOCTYPE html>
+<html lang="ja">
 <head>
-    <meta charset="utf-8">
-	<meta name=”viewport” content=”width=device-width", initial-scale=1.0″>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-	<link rel="stylesheet" type="text/css" href="procon34/style.css">
-    <title>Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuSwiftive - Self Introduction</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h3 class="title">procon34の作品紹介ページ</h3>
-	<p>
-		<a href="procon34/index.html">Learn Mate</a>
-	</p>
-	<h3 class="title">電卓(Yewで実装)</h3>
-	<p>
-		<a href="calc/index.html">リンクはこちら</a>
-	</p>
-	<h3 class="title">使用言語</h3>
-	<p>
-		Python : Mid 2020 ~ (お休み中...)<br>
-		Rust : Mid 2022 ~ Now<br>
-		TypeScript : Mid 2023 ~ Now<br>
-	</p>
-	<h3 class="title">競技プログラミング用ライブラリ(Rust)</h3>
-	<p>
-	<a href="doc/rustlib/index.html">Documents</a><br>
-	<a href="https://github.com/sou31415/RustLibrary">src</a>
-	</p>
-	<h3 class="title">現在取り組んでいること</h3>
-	<p>
-		・Rustを用いたLinuxコマンドの再構築<br />
-		・Rustを用いたWebバックエンドの開発<br />
-		・Yewを用いたWebフロントの開発(WebAssembly)<br />
-		・TypeScriptを用いたWebフロントの開発(React)<br />
-		・競技プログラミング - <a href="https://atcoder.jp/users/sou31415">AtCoder Profile</a><br>
-	</p>
-	<h3 class="title">関連ページ一覧</h3>
-	<p>
-		<a href="https://qiita.com/sou31415/items/6be97fdcd9f188d0c070">AtCoder入茶記事(Qiita)</a><br>
-		<a href="codes/index.html">競プロ備忘録</a><br>
-		<a href="cipher_browser/index.html">AES暗号化・復号化ツール</a><br>
-		<a href="https://github.com/sou31415/program">競プロコード一覧</a><br>
-		<a href="https://www.ariake-nct.ac.jp/award-info/2023/11/23670.html">第34回高専プログラミングコンテスト</a><br>
-		<a href="https://youtu.be/Dxvy-6MJinc?si=Cvq8j0gZz3nagbO-&t=8303">令和5年度起業家甲子園</a>
-	</p>
-	<center>
-		<a href="https://github.com/sou31415"><img class="icon" src="GitHub-Mark.png" ></img></a>
-	</center>
+    <div class="container">
+        <!-- ヘッダー -->
+        <header class="glass-header">
+            <div class="nav-container">
+                <div class="logo">RuSwiftive</div>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- ヒーローセクション -->
+        <section class="hero-section">
+            <img src="icon2.jpeg" alt="プロフィール写真" class="profile-image">
+            <h1 class="hero-title">RuSwiftive</h1>
+            <p class="hero-subtitle">バックエンドエンジニア</p>
+            <p class="hero-description">
+
+            </p>
+        </section>
+
+        <!-- 自己紹介セクション -->
+        <section id="about" class="section">
+            <h2 class="section-title">About Me</h2>
+            <div class="section-content">
+                <p>
+                    RuSwiftiveです。
+                </p>
+                <br>
+                <p>
+				First,Accessibility.
+				Second,Just for fun.
+                </p>
+                <br>
+                <p>
+				Hobby : Walking,Game...
+				Strong : Pazzle,Human Beatbox...
+                </p>
+            </div>
+        </section>
+
+        <!-- スキルセクション -->
+        <section id="skills" class="section">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3 class="skill-name">フロントエンド開発</h3>
+                    <p class="skill-description">HTML, CSS, JavaScript, React, Vue.js</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3 class="skill-name">UI/UXデザイン</h3>
+                    <p class="skill-description">Figma, Adobe XD, Photoshop</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚡</div>
+                    <h3 class="skill-name">パフォーマンス最適化</h3>
+                    <p class="skill-description">Webpack, Vite, SEO対策</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🛠️</div>
+                    <h3 class="skill-name">開発ツール</h3>
+                    <p class="skill-description">Git, Docker, VS Code</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 経歴セクション -->
+        <section id="experience" class="section">
+            <h2 class="section-title">Job/Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025年 - 現在</div>
+                    <h3 class="timeline-title">ソフトバンク株式会社</h3>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024年6月 - 2024年11月</div>
+                    <h3 class="timeline-title">Apple Japan合同会社</h3>
+                    <p class="timeline-description">
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024年3月</div>
+                    <h3 class="timeline-title">起業家甲子園出場</h3>
+                    <p class="timeline-description">
+                        Learn Mateについてビジネスプランを設定し、同コンテストに出場。<br>
+                        さくらインターネット社よりパートナー企業特別賞を受賞。
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023年10月 - 2024年1月</div>
+                    <h3 class="timeline-title">Corporate Engineer - 株式会社LabBase</h3>
+                    <p class="timeline-description">
+                        企業向けWebアプリケーションの開発に従事。Vue.jsとTypeScriptを使用し、
+                        保守性の高いコードベースの構築に貢献しました。
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023年10月</div>
+                    <h3 class="timeline-title">第34回高専プログラミングコンテスト出場</h3>
+                    <p class="timeline-description">
+                        学生視点で学生に寄り添ったLMS「Learn Mate」を提案。<br>
+                        jig.jp社より企業賞を受賞。<br>
+                        また、情報通信研究機構よりNICT書を受賞し、起業家甲子園への挑戦権を獲得。
+                    </p>
+                </div>
+            </div>
+        </section>
+        <footer class="glass-footer">
+            <p>&copy; 2025 RuSwiftive. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // フォーム送信処理
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('メッセージを送信しました！（これはデモです）');
+        });
+    </script>
 </body>
+</html>
