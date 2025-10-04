@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>ABC284 log</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<h2><center><a href="../index.html">AtCoder Stack</a></center></h2>
+	<ul class="accordion-area">
+		<li>
+			<section>
+			<h3 class="title">A - Sequence of Strings</h3>
+			<div class="box">
+				<p><a href="https://atcoder.jp/contests/abc284/tasks/abc284_a">Problem</a><br>
+				入力された文字列を入力された順番とは逆順で出力してください、という問題。文字列が入ったベクタを.reverse()で反転させて出力した。そのままの実装。<br><a href="https://atcoder.jp/contests/abc284/submissions/38987154">A:submission</a>
+				</p>
+			</div>
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">B - Multi Test Cases</h3>
+				<div class="box">
+					<p><a href="https://atcoder.jp/contests/abc284/tasks/abc284_b">Problem</a><br>
+					T個のテストケースが与えられてそれぞれのテストケースのなかで奇数の個数を出力する問題。テストケースが入ったベクタaに対してa.iter().filter(|x| x%2==1).count()をすれば奇数の個数を取り出せるためそれを出力すれば良い。<br><a href="https://atcoder.jp/contests/abc284/submissions/37946625">B:submission</a></p>
+				</div>
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">C - Count Connected Components</h3>
+				<div class="box">
+					<p><a href="https://atcoder.jp/contests/abc284/tasks/abc284_c">Problem</a><br>
+		N頂点M辺のグラフが与えられ、幾つの塊があるか、という問題。UnionFindを使うところまでは容易に想像がつくが、塊の数をどう表現すれば良いか、少し考えた。結果、1からNまでの点のparent属性をHashSetにcollectする。そのsetの要素数が塊の数と同義になるためset.len()で出力した。<br>
+		<a href="https://atcoder.jp/contests/abc284/submissions/40109989">C:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">D - Happy New Year 2023</h3>
+				<div class="box">
+					<p><a href="https://atcoder.jp/contests/abc284/submissions/37958607">Problem</a><br>
+		p^2qで表せる数の素因数分解をする、という問題。ここで引っかかってくるのが制約でNが10^19ほどと非常に大きいため愚直に解くと間に合わない。そこで数がp^2qであることに着目するとmin(p,q)はNの3分の1乗ほどしか無いことがわかる。よって試し割りすれば良いのはせいぜい10^6ほどで良いためよほど重い処理でない限りは時間内に解くことができる。試し割して割れたらloopを抜けてその数がpであるのかqであるのかで処理を分ける必要がある。<br>
+		<a href="https://atcoder.jp/contests/abc284/submissions/37958607">D:submission</a><br>
+					</p>
+				</div>
+			</section>
+		</li>
+	</ul>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="./index.js"></script>
+</body>

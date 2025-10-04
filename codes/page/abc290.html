@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<head>
+	<meta charset="utf-8">
+	<title>ABC290 log</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+	<center>
+	<h2><a href="../index.html">AtCoder Stack</a></h2>
+	</center>
+	<ul class="accordion-area">
+		<li>
+		<section>
+			<h3 class="title">A - Contest Result</h3>
+			<div class="box">
+				<p><a href="https://atcoder.jp/contests/abc290/tasks/abc290_a">Problem</a><br>
+				Bの配列はmarker::Usize1で受け取る、あとは足すだけ<br><a href="https://atcoder.jp/contests/abc290/submissions/39012215">A:submission</a>
+				</p>
+			</div>
+		</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">B - Qual B</h3>
+				<div class="box">
+					<p><a href="https://atcoder.jp/contests/abc290/tasks/abc290_b">Problem</a><br>
+					文字列SをCharsで受け取り、各文字に対して処理を行う。oが出現した数をKまで数え、以降のoはxに置き換えて出力。計算量は<i>O(N)</i>となりN&lt;=100のため十分高速に動作する。<br><a href="https://atcoder.jp/contests/abc290/submissions/39036132">B:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">C - Max MEX</h3>
+				<div class="box">				
+					<p><a href="https://atcoder.jp/contests/abc290/tasks/abc290_c">Problem</a><br>
+				MEXが何かわからず大幅に時間を消費した、が要は0からどこまで連続した整数があるか?というのを答えるだけであった。よってHashSetにaの各要素を入れていき、0から線形探索するだけで求められる。計算量は<i>O(N+K)</i>となり、N,Kは最大でも3.0x10^5のため、解くには十分高速である。<br><a href="https://atcoder.jp/contests/abc290/submissions/39037151">C:submission</a>
+					</p>
+				</div>
+
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">D - Marking</h3>
+				<div class="box">
+					<p><a href="https://atcoder.jp/contests/abc290/tasks/abc290_d">Problem</a><br>
+		この問題を解くには[A,Bを正整数とし、gcd(A , B)をgとおき、A = ag 、 B = bgと定義した時a個の数0、B mod A、2B mod A、...(a - 1) mod Aの中には0以上A未満のgの倍数がちょうど1回ずつ現れる]という知識が前提となる。あとはなんやかんやする。
+					</p>
+				</div> 
+			</section>
+		</li>
+	</ul>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="./index.js"></script>
+</body>
