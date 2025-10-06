@@ -23,29 +23,13 @@
         <span class="brand__role">Portfolio</span>
       </div>
       <nav class="site-nav" aria-label="主要ナビゲーション">
-        <a href="#hero">Top</a>
         <a href="#about">About</a>
         <a href="#works">Works</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+        <a href="#skill">Skill</a>
       </nav>
     </header>
 
     <main class="site-main">
-      <section id="hero" class="panel hero" aria-labelledby="hero-title">
-        <div class="panel__inner">
-          <p class="eyebrow">LiquidGlass Design</p>
-          <h1 id="hero-title">柔らかな光沢で魅せるポートフォリオ</h1>
-          <p class="lead">
-            ガラスの透明感とニュートラルな色味を活かしたレイアウトで、情報をそっと引き立てる軽量な1ページ構成です。
-          </p>
-          <div class="hero__links">
-            <a class="button" href="#works">制作実績を見る</a>
-            <a class="button button--ghost" href="#contact">お問い合わせ</a>
-          </div>
-        </div>
-      </section>
-
       <section id="about" class="panel" aria-labelledby="about-title">
         <div class="panel__inner">
           <h2 id="about-title" class="panel__title">About</h2>
@@ -66,6 +50,25 @@
               <span class="info-grid__value">Minimal, Calm, Glassmorphism</span>
             </li>
           </ul>
+          <div class="about__social">
+            <span class="info-grid__label">SNS</span>
+            <div class="social-links" aria-label="SNSアカウント" data-social-list>
+              <a
+                class="social-links__item"
+                href="https://www.linkedin.com/"
+                aria-label="LinkedIn"
+                data-platform="LinkedIn"
+                >LinkedIn</a
+              >
+              <a
+                class="social-links__item"
+                href="https://www.facebook.com/"
+                aria-label="Facebook"
+                data-platform="Facebook"
+                >Facebook</a
+              >
+            </div>
+          </div>
         </div>
       </section>
 
@@ -98,9 +101,9 @@
         </div>
       </section>
 
-      <section id="skills" class="panel" aria-labelledby="skills-title">
+      <section id="skill" class="panel" aria-labelledby="skill-title">
         <div class="panel__inner">
-          <h2 id="skills-title" class="panel__title">Skills</h2>
+          <h2 id="skill-title" class="panel__title">Skill</h2>
           <ul class="skill-list">
             <li>
               <span>Figma</span>
@@ -124,23 +127,6 @@
               <span class="sr-only">熟練度 80%</span>
             </li>
           </ul>
-        </div>
-      </section>
-
-      <section id="contact" class="panel" aria-labelledby="contact-title">
-        <div class="panel__inner">
-          <h2 id="contact-title" class="panel__title">Contact</h2>
-          <p>
-            新規案件やコラボレーションのご相談は、以下のメールまたはSNSよりご連絡ください。柔らかな演出と軽さを両立したUIを共に作り上げましょう。
-          </p>
-          <div class="contact">
-            <a class="contact__link" href="mailto:hello@example.com">hello@example.com</a>
-            <div class="contact__social">
-              <a href="https://twitter.com/" aria-label="Twitter">Twitter</a>
-              <a href="https://dribbble.com/" aria-label="Dribbble">Dribbble</a>
-              <a href="https://github.com/" aria-label="GitHub">GitHub</a>
-            </div>
-          </div>
         </div>
       </section>
     </main>
