@@ -1,138 +1,133 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RuSwiftive - Self Introduction</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <!-- ヘッダー -->
-        <header class="glass-header">
-            <div class="nav-container">
-                <div class="logo">RuSwiftive</div>
-                <nav>
-                    <ul class="nav-menu">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Liquid Glass Portfolio</title>
+    <meta
+      name="description"
+      content="軽量なLiquid Glassスタイルでまとめたシンプルなポートフォリオ"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/portfolio.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand__name">sou31415</span>
+        <span class="brand__role">Portfolio</span>
+      </div>
+      <nav class="site-nav" aria-label="主要ナビゲーション">
+        <a href="#about">About</a>
+        <a href="#works">Works</a>
+        <a href="#skill">Skill</a>
+      </nav>
+    </header>
+
+    <main class="site-main">
+      <section id="about" class="panel" aria-labelledby="about-title">
+        <div class="panel__inner">
+          <h2 id="about-title" class="panel__title">About</h2>
+          <p>
+            Webバックエンドが好き。
+          </p>
+          <ul class="info-grid" aria-label="プロフィール情報">
+            <li>
+              <span class="info-grid__label">Place</span>
+              <span class="info-grid__value">Tokyo, Fukuoka</span>
+            </li>
+            <li>
+              <span class="info-grid__label">Tech</span>
+              <span class="info-grid__value">Web-Back,Web-Front,UI/UX...</span>
+            </li>
+            <li>
+              <span class="info-grid__label"></span>
+              <span class="info-grid__value">Minimal, Calm, Glassmorphism</span>
+            </li>
+          </ul>
+          <div class="about__social">
+            <span class="info-grid__label">SNS</span>
+            <div class="social-links" aria-label="SNSアカウント" data-social-list>
+              <a
+                class="social-links__item"
+                href="https://www.linkedin.com/in/sotaro-furukawa-7b6050304"
+                aria-label="LinkedIn"
+                data-platform="LinkedIn"
+                >LinkedIn</a
+              >
+              <a
+                class="social-links__item"
+                href="https://www.facebook.com/furukawa.sotaro.5"
+                aria-label="Facebook"
+                data-platform="Facebook"
+                >Facebook</a
+              >
             </div>
-        </header>
+          </div>
+        </div>
+      </section>
 
-        <!-- ヒーローセクション -->
-        <section class="hero-section">
-            <img src="icon2.jpeg" alt="プロフィール写真" class="profile-image">
-            <h1 class="hero-title">RuSwiftive</h1>
-            <p class="hero-subtitle">バックエンドエンジニア</p>
-            <p class="hero-description">
+      <section id="works" class="panel" aria-labelledby="works-title">
+        <div class="panel__inner">
+          <h2 id="works-title" class="panel__title">Works</h2>
+          <div class="works">
+            <article class="card">
+              <h3 class="card__title">Apple Japan</h3>
+              <p class="card__desc">
+                Sales Specialist - Fukuoka
+              </p>
+              <span class="card__meta">2024/06/01 - 2024/11/30</span>
+            </article>
+            <article class="card">
+              <h3 class="card__title">LabBase</h3>
+              <p class="card__desc">
+                Corporate Engineer
+              </p>
+              <span class="card__meta">2023/10/17 - 2024/01/31</span>
+            </article>
+          </div>
+        </div>
+      </section>
 
-            </p>
-        </section>
+      <section id="skill" class="panel" aria-labelledby="skill-title">
+        <div class="panel__inner">
+          <h2 id="skill-title" class="panel__title">Skill</h2>
+          <ul class="skill-list">
+            <li>
+              <span>Actix-Web</span>
+              <span class="skill-list__bar" aria-hidden="true">
+                <span style="width: 85%"></span>
+              </span>
+              <span class="sr-only">85%</span>
+            </li>
+            <li>
+              <span>Rust</span>
+              <span class="skill-list__bar" aria-hidden="true">
+                <span style="width: 70%"></span>
+              </span>
+              <span class="sr-only">70%</span>
+            </li>
+            <li>
+              <span>TypeScript</span>
+              <span class="skill-list__bar" aria-hidden="true">
+                <span style="width: 60%"></span>
+              </span>
+              <span class="sr-only">60%</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
 
-        <!-- 自己紹介セクション -->
-        <section id="about" class="section">
-            <h2 class="section-title">About Me</h2>
-            <div class="section-content">
-                <p>
-                    RuSwiftiveです。
-                </p>
-                <br>
-                <br>
-                <p>
-				Hobby : Walking,Game...
-				Strong : Pazzle,Human Beatbox...
-                </p>
-            </div>
-        </section>
+    <footer class="site-footer">
+      <small>2024 sou31415</small>
+    </footer>
 
-        <!-- スキルセクション -->
-        <section id="skills" class="section">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">💻</div>
-                    <h3 class="skill-name">フロントエンド開発</h3>
-                    <p class="skill-description">HTML, CSS, JavaScript, React, Vue.js</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🎨</div>
-                    <h3 class="skill-name">UI/UXデザイン</h3>
-                    <p class="skill-description">Figma, Adobe XD, Photoshop</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">⚡</div>
-                    <h3 class="skill-name">パフォーマンス最適化</h3>
-                    <p class="skill-description">Webpack, Vite, SEO対策</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🛠️</div>
-                    <h3 class="skill-name">開発ツール</h3>
-                    <p class="skill-description">Git, Docker, VS Code</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 経歴セクション -->
-        <section id="experience" class="section">
-            <h2 class="section-title">Job/Experience</h2>
-                <div class="timeline-item">
-                    <div class="timeline-date">2024年6月 - 2024年11月</div>
-                    <h3 class="timeline-title">Apple Japan合同会社</h3>
-                    <p class="timeline-description">
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2024年3月</div>
-                    <h3 class="timeline-title">起業家甲子園出場</h3>
-                    <p class="timeline-description">
-                        Learn Mateについてビジネスプランを設定し、同コンテストに出場。<br>
-                        さくらインターネット社よりパートナー企業特別賞を受賞。
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2023年10月 - 2024年1月</div>
-                    <h3 class="timeline-title">Corporate Engineer - 株式会社LabBase</h3>
-                    <p class="timeline-description">
-                        企業向けWebアプリケーションの開発に従事。Vue.jsとTypeScriptを使用し、
-                        保守性の高いコードベースの構築に貢献しました。
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2023年10月</div>
-                    <h3 class="timeline-title">第34回高専プログラミングコンテスト出場</h3>
-                    <p class="timeline-description">
-                        学生視点で学生に寄り添ったLMS「Learn Mate」を提案。<br>
-                        jig.jp社より企業賞を受賞。<br>
-                        また、情報通信研究機構よりNICT書を受賞し、起業家甲子園への挑戦権を獲得。
-                    </p>
-                </div>
-            </div>
-        </section>
-        <footer class="glass-footer">
-            <p>&copy; 2025 RuSwiftive. All rights reserved.</p>
-        </footer>
-    </div>
-
-    <script>
-        // スムーススクロール
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // フォーム送信処理
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('メッセージを送信しました！（これはデモです）');
-        });
-    </script>
-</body>
+    <script src="assets/js/portfolio.js" type="module"></script>
+  </body>
 </html>
