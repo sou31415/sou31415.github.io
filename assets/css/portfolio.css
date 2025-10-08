@@ -152,6 +152,11 @@ body {
   gap: 0.6rem;
 }
 
+.about__media {
+  display: grid;
+  gap: 0.6rem;
+}
+
 .social-links {
   display: flex;
   flex-wrap: wrap;
@@ -191,6 +196,33 @@ body {
 
 .info-grid__value {
   font-weight: 500;
+}
+
+.media-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.media-links__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+  color: var(--text-secondary);
+  backdrop-filter: blur(6px);
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.media-links__item:hover,
+.media-links__item:focus-visible {
+  color: var(--text-primary);
+  border-color: var(--accent);
 }
 
 .works {
