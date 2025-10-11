@@ -1,14 +1,13 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   font-family: 'Noto Sans JP', 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --bg: radial-gradient(circle at 20% 20%, rgba(102, 161, 255, 0.18), transparent 55%),
-    radial-gradient(circle at 80% 15%, rgba(255, 176, 209, 0.18), transparent 60%),
-    #090c17;
-  --glass-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.02));
-  --glass-border: rgba(255, 255, 255, 0.18);
-  --text-primary: #f5f7ff;
-  --text-secondary: rgba(235, 238, 255, 0.72);
-  --accent: #7bd7ff;
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --border: #dfe3eb;
+  --muted-surface: #f0f3f9;
+  --text-primary: #1f2933;
+  --text-secondary: #52606d;
+  --accent: #3f8efc;
   --container: min(960px, 90vw);
   --transition: 160ms ease;
 }
@@ -36,14 +35,13 @@ body {
   align-items: center;
   gap: 1.5rem;
   padding: clamp(1rem, 3vw, 1.5rem) clamp(1.25rem, 3vw, 2rem);
-  background: var(--glass-surface);
-  border: 1px solid var(--glass-border);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 18px;
-  backdrop-filter: blur(12px);
   position: sticky;
   top: clamp(0.75rem, 3vw, 1.5rem);
   z-index: 10;
-  box-shadow: 0 12px 30px rgba(4, 9, 20, 0.26);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
 }
 
 .brand {
@@ -110,10 +108,9 @@ body {
 
 .panel {
   border-radius: 22px;
-  background: var(--glass-surface);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 16px 28px rgba(6, 12, 24, 0.24);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 14px 24px rgba(15, 23, 42, 0.08);
 }
 
 .panel__inner {
@@ -169,17 +166,18 @@ body {
   justify-content: center;
   padding: 0.45rem 1.1rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid transparent;
   color: var(--text-secondary);
+  background: var(--muted-surface);
   text-decoration: none;
-  backdrop-filter: blur(8px);
-  transition: color var(--transition), border-color var(--transition);
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
 }
 
 .social-links__item:hover,
 .social-links__item:focus-visible {
   color: var(--text-primary);
   border-color: var(--accent);
+  background: #e7efff;
 }
 
 .info-grid li {
@@ -212,17 +210,18 @@ body {
   gap: 0.4rem;
   padding: 0.5rem 1rem;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid transparent;
   text-decoration: none;
   color: var(--text-secondary);
-  backdrop-filter: blur(6px);
-  transition: color var(--transition), border-color var(--transition);
+  background: var(--muted-surface);
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
 }
 
 .media-links__item:hover,
 .media-links__item:focus-visible {
   color: var(--text-primary);
   border-color: var(--accent);
+  background: #e7efff;
 }
 
 .works {
@@ -233,18 +232,18 @@ body {
 .card {
   padding: 1.4rem;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(8, 12, 22, 0.28);
-  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  background: var(--muted-surface);
   display: grid;
   gap: 0.75rem;
-  transition: transform var(--transition), border-color var(--transition);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
 .card:hover,
 .card:focus-within {
   transform: translateY(-4px);
   border-color: var(--accent);
+  box-shadow: 0 12px 24px rgba(63, 142, 252, 0.18);
 }
 
 .card__title {
@@ -282,7 +281,7 @@ body {
 .skill-list__bar {
   height: 6px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--muted-surface);
   overflow: hidden;
 }
 
