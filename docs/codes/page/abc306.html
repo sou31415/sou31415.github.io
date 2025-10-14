@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<center><h2><a href="../index.html">AtCoder Stack</a></h2></center>
+	<ul class="accordion-area">
+		<li>
+			<section>
+				<h3 class="title">A - Echo</h3>
+				<div class="box">
+					<p>
+					<a href="https://atcoder.jp/contests/abc306/tasks/abc306_a">Problem</a><br />
+					長さNが与えられるのでn回繰り返して2文字出力する。2N回繰り返してi/1を出力する解法もありそう
+					<br><a href="https://atcoder.jp/contests/abc306/submissions/42317669">A:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">B - Base 2</h3>
+				<div class="box">
+					<p><a href="https://atcoder.jp/contests/abc306/tasks/abc306_b">Problem</a><br />
+					iを0..64で回し、resultにa[i]をiビットシフトしたものを足していったときのresultが答え。a[i]の値による分岐が不要なため簡潔である。
+					<br><a href="https://atcoder.jp/contests/abc306/submissions/42322379">B:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">C - Centers</h3>
+				<div class="box">
+					<p><a href="https://atcoder.jp/contests/abc306/tasks/abc306_c">Problem</a><br>
+					問題文を誤読してしまい、時間がかかってしまった。iが出てきた回数を管理するtimeとなんの値が何番目に出てきたかを管理するfを用いて解いた。fをa[i]の値でsortするためf.sort_by_key(|x| x.1)としてsortし、mapで+1して出力。
+					<br><a href="https://atcoder.jp/contests/abc306/submissions/42348289">C:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">D - Poisonous Full-Course</h3>
+					<div class="box">
+						<p><a href="https://atcoder.jp/contests/abc306/tasks/abc306_d">Problem</a><br>
+						よくわからない状態の遷移が説明されてあり、最大値を求める問題とあったため、一目でdpとわかったが実装は間に合わず。i番目までのものを食べる/食べないを選択した時に腹を壊している/いないでdpをした。状態の遷移に気をつけながら実装する。<br><a href="https://atcoder.jp/contests/abc306/submissions/42508313">D:submission</a></p>
+					</div>
+			</section>
+		</li>
+	</ul>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="./index.js"></script>
+</body>

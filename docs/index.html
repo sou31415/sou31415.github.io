@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>sou31415 Portfolio</title>
+    <meta
+      name="description"
+      content="落ち着いたミニマルデザインでまとめたポートフォリオ"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/portfolio.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand__name">sou31415</span>
+        <span class="brand__role">Portfolio</span>
+      </div>
+      <nav class="site-nav" aria-label="主要ナビゲーション">
+        <a href="#about">About</a>
+        <a href="#works">Works</a>
+        <a href="#skill">Skill</a>
+      </nav>
+    </header>
+
+    <main class="site-main">
+      <section id="about" class="panel" aria-labelledby="about-title">
+        <div class="panel__inner">
+          <h2 id="about-title" class="panel__title">About</h2>
+          <p>
+            Webバックエンドが好き。
+          </p>
+          <ul class="info-grid" aria-label="プロフィール情報">
+            <li>
+              <span class="info-grid__label">Place</span>
+              <span class="info-grid__value">Tokyo, Fukuoka</span>
+            </li>
+            <li>
+              <span class="info-grid__label">Tech</span>
+              <span class="info-grid__value">Web-Back,Web-Front,UI/UX...</span>
+            </li>
+            <li>
+              <span class="info-grid__label"></span>
+              <span class="info-grid__value">Minimal, Calm, Simple</span>
+            </li>
+          </ul>
+          <div class="about__social">
+            <span class="info-grid__label">SNS</span>
+            <div class="social-links" aria-label="SNSアカウント" data-social-list>
+              <a
+                class="social-links__item"
+                href="https://www.linkedin.com/in/sotaro-furukawa-7b6050304"
+                aria-label="LinkedIn"
+                data-platform="LinkedIn"
+                >LinkedIn</a
+              >
+              <a
+                class="social-links__item"
+                href="https://www.facebook.com/furukawa.sotaro.5"
+                aria-label="Facebook"
+                data-platform="Facebook"
+                >Facebook</a
+              >
+            </div>
+          </div>
+          <div class="about__media">
+            <span class="info-grid__label">Activity</span>
+            <ul class="media-links" aria-label="活動が紹介された記事や動画">
+              <li>
+                <a href="https://example.com/article" class="media-links__item"
+                  >活動が紹介された記事タイトル</a
+                >
+              </li>
+              <li>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="media-links__item"
+                  >活動紹介のYouTube動画</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="works" class="panel" aria-labelledby="works-title">
+        <div class="panel__inner">
+          <h2 id="works-title" class="panel__title">Works</h2>
+          <div class="works">
+            <article class="card">
+              <h3 class="card__title">Apple Japan</h3>
+              <p class="card__desc">
+                Sales Specialist - Fukuoka
+              </p>
+              <span class="card__meta">2024/06/01 - 2024/11/30</span>
+            </article>
+            <article class="card">
+              <h3 class="card__title">LabBase</h3>
+              <p class="card__desc">
+                Corporate Engineer
+              </p>
+              <span class="card__meta">2023/10/17 - 2024/01/31</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="skill" class="panel" aria-labelledby="skill-title">
+        <div class="panel__inner">
+          <h2 id="skill-title" class="panel__title">Skill</h2>
+          <ul class="skill-list">
+            <li>
+              <span>Actix-Web</span>
+              <span class="skill-list__bar" aria-hidden="true">
+                <span style="width: 85%"></span>
+              </span>
+              <span class="sr-only">85%</span>
+            </li>
+            <li>
+              <span>Rust</span>
+              <span class="skill-list__bar" aria-hidden="true">
+                <span style="width: 70%"></span>
+              </span>
+              <span class="sr-only">70%</span>
+            </li>
+            <li>
+              <span>TypeScript</span>
+              <span class="skill-list__bar" aria-hidden="true">
+                <span style="width: 60%"></span>
+              </span>
+              <span class="sr-only">60%</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <small>2024 sou31415</small>
+    </footer>
+
+    <script src="assets/js/portfolio.js" type="module"></script>
+  </body>
+</html>

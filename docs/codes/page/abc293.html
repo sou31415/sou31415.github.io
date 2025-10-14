@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>ABC293 log</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <h2>
+		<center>
+			<a href="../index.html">AtCoder Stack</a>
+		</center>
+	</h2>
+	<ul class="accordion-area">
+		<li>
+			<section>
+				<h3 class="title">A - Swap Odd and Even</h3>
+				<div class="box">
+					<p><a href="https://atcoder.jp/contests/abc293/tasks/abc293_a">Problem</a><br>
+					めんどくさかったので愚直に実装した。文字列の長さの半分の回数だけループさせて2i+1,2iの順で出力する。<br><a href="https://atcoder.jp/contests/abc293/submissions/39601691">A:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">B - Call the ID Number</h3>
+				<div class="box">
+					<p><a href="https://atcoder.jp/contests/abc293/tasks/abc293_b">Problem</a><br>
+					添字に気をつけて実装する。.iter()を使って実装するともう少し丁寧になるはずだがめんどくさかった。<br><a href="https://atcoder.jp/contests/abc293/submissions/39613084">B:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">C - Make Takahashi Happy</h3>
+				<div class="box">
+					<p><a href="https://atcoder.jp/contests/abc293/tasks/abc293_c">Problem</a><br>
+					DFSを用いた。フィールドを表している2次元ベクタと縦の制約<i>H</i>と横の制約<i>W</i>を引数に渡してusize型のcountを返す。<i>H</i>と<i>W</i>の制約がたかだか10程度なのでbit全探索を使っても間に合う。が、bit全探索でうまく実装する方法が思いつかなかったため各点をNode,その点から右と上に伸びる辺をEdgeとしてDFSできる。stackの要素はx座標、y座標、その座標で通った点をもつHashSetの3つのtupleとする。最初にスタート地点の要素をpushしてそこからはstackをpopしたものを<i>while let Some(x , y , mut set)</i>で受け取る。xが右端でない時右隣にある要素についてstackにpush,下端でない時真下にある要素についてstackにpushする。xもyも端に行き着いた時のsetの要素数が<i>H+W-1</i>になっていれば経路上の数が重複してないことを表しているため+1する。<br><a href="https://atcoder.jp/contests/abc293/submissions/40122551">C:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
+	</ul>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="./index.js"></script>
+</body>
