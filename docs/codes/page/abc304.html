@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<center><h2><a href="../index.html">AtCoder Stack</a></h2></center>
+	<ul class="accordion-area">
+		<li>
+			<section>
+				<h3 class="title">A - First Player</h3>
+				<div class="box">
+					<p>
+					<a href="https://atcoder.jp/contests/abc304/tasks/abc304_a">Problem</a><br />
+					最小値が出た時の値と添え字を記録しておき、最小値から順番に出力する。添え字がn-1を超えた時nを引いて範囲外アクセスを防ぐようにする。<br><a href="https://atcoder.jp/contests/abc304/submissions/41936702">A:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">B - Subscribers</h3>
+				<div class="box">
+					<p><a href="https://atcoder.jp/contests/abc304/tasks/abc304_b">Problem</a><br />
+					Charsのusizeバージョンのベクタを作る。100より小さい時はnを出力してearly returnをし、それ以外の時は0..3を出力して3..v.len()の間0を出力する。
+					<br><a href="https://atcoder.jp/contests/abc304/submissions/41940972">B:submission</a>
+					</p>
+				</div>
+			</section>
+		</li>
+		<li>
+			<section>
+				<h3 class="title">C - Virus</h3>
+				<div class="box">
+					<p><a href="https://atcoder.jp/contests/abc304/tasks/abc304_c">Problem</a><br>
+					愚直に解いたが大量のペナルティを吐いた。十分に時間が経つ、という処理を適切に把握できていなかったことが原因と思われる。最終的にD以下の距離がある点i,jをUnionFindでつなぎ、各点1~Nについてuf.find(0)とuf.find(i)が等しい時Yes,違う時Noとする。<br>追記:DFSでもACした(2023/6/7)
+					<br><a href="https://atcoder.jp/contests/abc304/submissions/41974807">C:submission(UnionFind)</a>
+					<br><a href="https://atcoder.jp/contests/abc304/submissions/42060723">C:submission(DFS)</a>
+					</p>
+				</div>
+			</section>
+		</li>
+	</ul>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="./index.js"></script>
+</body>

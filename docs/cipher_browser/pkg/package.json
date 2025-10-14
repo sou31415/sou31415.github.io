@@ -1,0 +1,12 @@
+{
+  "name": "cipher_browser",
+  "version": "0.1.0",
+  "files": [
+    "cipher_browser_bg.wasm",
+    "cipher_browser.js",
+    "cipher_browser.d.ts"
+  ],
+  "module": "cipher_browser.js",
+  "types": "cipher_browser.d.ts",
+  "sideEffects": false
+}
