@@ -10,10 +10,10 @@ const notoSansJp = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   title: {
-    default: "Liquid Glass Portfolio",
-    template: "%s | Liquid Glass Portfolio"
+    default: "RuSwift Portfolio",
+    template: "%s | RuSwift Portfolio"
   },
-  description: "軽量なLiquid Glassスタイルでまとめたシンプルなポートフォリオ",
+  description: "Building...",
   icons: {
     icon: "/favicon.ico"
   }
