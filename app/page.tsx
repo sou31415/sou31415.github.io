@@ -62,12 +62,20 @@ const SOCIAL_LINKS: LinkItem[] = [
 
 const ACTIVITY_LINKS: LinkItem[] = [
   {
-    label: "活動が紹介された記事タイトル",
-    href: "https://example.com/article"
+    label: "第34回高専プログラミングコンテスト課題部門 プレゼンテーション",
+    href: "https://www.youtube.com/live/ro57pRwFhLM?si=cXeXDmQhOH04R8fW"
   },
   {
-    label: "活動紹介のYouTube動画",
-    href: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    label:"↑本校記事",
+    href:"https://www.ariake-nct.ac.jp/award-info/2023/11/23670.html"
+  },
+  {
+    label: "令和5年度 起業家甲子園 プレゼンテーション",
+    href: "https://youtu.be/Dxvy-6MJinc?si=As8rUoCkjkEUD70B"
+  },
+  {
+    label: "↑本校記事",
+    href: "https://www.ariake-nct.ac.jp/award-info/2024/06/25756.html"
   }
 ];
 
@@ -153,7 +161,7 @@ export default function HomePage() {
       >
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-1 text-sm uppercase tracking-[0.08em] text-slate-500">
-            <span className="text-base font-semibold text-slate-900">sou31415</span>
+            <span className="text-base font-semibold text-slate-900">sou31415(ただいま改修工事中)</span>
             <span>Portfolio</span>
           </div>
           <nav
@@ -198,7 +206,6 @@ export default function HomePage() {
               {[
                 { label: "Place", value: "Tokyo, Fukuoka" },
                 { label: "Tech", value: "Web-Back,Web-Front,UI/UX..." },
-                { label: "", value: "Minimal, Calm, Glassmorphism" }
               ].map(({ label, value }) => (
                 <li key={`${label}-${value}`} className="grid gap-1">
                   {label ? (
