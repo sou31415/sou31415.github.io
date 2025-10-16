@@ -4,7 +4,7 @@ import { posts } from "./posts";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "最新の活動や学びをまとめたブログ記事の一覧です。"
+  description: "活動、学びなど"
 };
 
 export default function BlogIndexPage() {
@@ -12,7 +12,7 @@ export default function BlogIndexPage() {
     <main className="blog-container">
       <header className="blog-header">
         <h1>Blog</h1>
-        <p>最近取り組んだプロジェクトや学びのメモをまとめています。</p>
+        <p>自身の活動、学び、思考の水たまり。</p>
       </header>
       <ul className="blog-list">
         {posts.map((post) => (
