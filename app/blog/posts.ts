@@ -1,6 +1,4 @@
-import { post as portfolioRefreshPost } from "./(posts)/portfolio-refresh-2024/page";
-import { post as rustBackendMemoPost } from "./(posts)/rust-backend-memo/page";
-import { post as studyNoteGrowthMindsetPost } from "./(posts)/study-note-growth-mindset/page";
+import { post as testPost } from "./(posts)/test/page";
 
 export type BlogPost = {
   slug: string;
@@ -13,9 +11,7 @@ export type BlogPost = {
 };
 
 export const posts: BlogPost[] = [
-  portfolioRefreshPost,
-  rustBackendMemoPost,
-  studyNoteGrowthMindsetPost
+  testPost
 ];
 
 const postsBySlug = posts.reduce<Record<string, BlogPost>>((acc, post) => {
