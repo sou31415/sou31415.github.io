@@ -1,4 +1,5 @@
 import { post as testPost } from "./(posts)/test/page";
+import { post as Birthday21Post } from "./(posts)/Birthday21/page"
 
 export type BlogPost = {
   slug: string;
@@ -11,6 +12,7 @@ export type BlogPost = {
 };
 
 export const posts: BlogPost[] = [
+  Birthday21Post,
   testPost
 ];
 
