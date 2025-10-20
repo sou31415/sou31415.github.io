@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { MouseEvent } from "react";
 import { useCallback, useEffect, useState } from "react";
 
@@ -24,10 +25,23 @@ type LinkItem = {
   href: string;
 };
 
+type NavItem =
+  | (NavSection & { href: string; type: "section" })
+  | { label: string; href: string; type: "link" };
+
 const NAV_SECTIONS: NavSection[] = [
   { id: "about", label: "About" },
   { id: "works", label: "Works" },
   { id: "skill", label: "Skill" }
+];
+
+const NAV_ITEMS: NavItem[] = [
+  ...NAV_SECTIONS.map((section) => ({
+    ...section,
+    href: `#${section.id}`,
+    type: "section" as const
+  })),
+  { label: "Blog", href: "/blog", type: "link" as const }
 ];
 
 const WORKS: Work[] = [
@@ -168,20 +182,32 @@ export default function HomePage() {
             aria-label="主要ナビゲーション"
             className="flex flex-wrap gap-3 text-sm font-medium text-slate-500"
           >
-            {NAV_SECTIONS.map(({ id, label }) => {
-              const isActive = activeSection === id;
+            {NAV_ITEMS.map((item) => {
+              const baseClassName =
+                "relative rounded-full px-4 py-2 transition-colors after:absolute after:bottom-1 after:left-3 after:right-3 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[#3f8efc] after:transition-transform after:content-[''] hover:text-slate-900 hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3f8efc]";
+
+              if (item.type === "section") {
+                const isActive = activeSection === item.id;
+
+                return (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    aria-current={isActive ? "location" : undefined}
+                    onClick={(event) => handleNavClick(event, item.id)}
+                    className={`${baseClassName} ${
+                      isActive ? "bg-[#e7efff] text-slate-900 after:scale-x-100" : ""
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+
               return (
-                <a
-                  key={id}
-                  href={`#${id}`}
-                  aria-current={isActive ? "location" : undefined}
-                  onClick={(event) => handleNavClick(event, id)}
-                  className={`relative rounded-full px-4 py-2 transition-colors after:absolute after:bottom-1 after:left-3 after:right-3 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[#3f8efc] after:transition-transform after:content-[''] hover:text-slate-900 hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3f8efc] ${
-                    isActive ? "bg-[#e7efff] text-slate-900 after:scale-x-100" : ""
-                  }`}
-                >
-                  {label}
-                </a>
+                <Link key={item.label} href={item.href} className={baseClassName}>
+                  {item.label}
+                </Link>
               );
             })}
           </nav>
