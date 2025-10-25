@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { posts } from "./posts";
+import { getAllPosts } from "../../lib/blog/posts";
 
 export const metadata: Metadata = {
   title: "Blog",
   description: "活動、学びなど"
 };
+
+const posts = getAllPosts();
 
 export default function BlogIndexPage() {
   return (

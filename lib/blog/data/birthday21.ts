@@ -1,6 +1,6 @@
-import type { BlogPost } from "../../posts";
+import type { BlogPost } from "../types";
 
-export const post: BlogPost = {
+export const birthday21Post: BlogPost = {
   slug: "Birthday21",
   title: "21歳になりました",
   description: "だらだらと",
