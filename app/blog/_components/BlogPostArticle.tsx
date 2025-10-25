@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { BlogPost } from "../posts";
+import type { BlogPost } from "../../../lib/blog/posts";
 
 export function BlogPostArticle({ post }: { post: BlogPost }) {
   return (
