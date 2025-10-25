@@ -1,5 +1,5 @@
-import { post as testPost } from "./(posts)/test/page";
-import { post as Birthday21Post } from "./(posts)/Birthday21/page"
+import { post as testPost } from "./(posts)/test/post";
+import { post as birthday21Post } from "./(posts)/Birthday21/post";
 
 export type BlogPost = {
   slug: string;
@@ -11,10 +11,7 @@ export type BlogPost = {
   body: string[];
 };
 
-export const posts: BlogPost[] = [
-  Birthday21Post,
-  testPost
-];
+export const posts: BlogPost[] = [birthday21Post, testPost];
 
 const postsBySlug = posts.reduce<Record<string, BlogPost>>((acc, post) => {
   acc[post.slug] = post;
