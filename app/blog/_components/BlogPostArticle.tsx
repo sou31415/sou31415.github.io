@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { BlogPost } from "../posts";
+import type { BlogPost } from "../../../lib/blog/types";
 
 export function BlogPostArticle({ post }: { post: BlogPost }) {
   return (
@@ -16,11 +16,13 @@ export function BlogPostArticle({ post }: { post: BlogPost }) {
               <span>{post.readingTime}</span>
             </p>
             <h1>{post.title}</h1>
-            <ul className="blog-post__tags" aria-label="タグ">
-              {post.tags.map((tag) => (
-                <li key={tag}>#{tag}</li>
-              ))}
-            </ul>
+            {post.tags.length > 0 && (
+              <ul className="blog-post__tags" aria-label="タグ">
+                {post.tags.map((tag) => (
+                  <li key={tag}>#{tag}</li>
+                ))}
+              </ul>
+            )}
           </header>
           <div className="blog-post__body">
             {post.body.map((paragraph, index) => (

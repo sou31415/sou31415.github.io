@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { posts } from "./posts";
+import { getAllPosts } from "../../lib/blog/posts";
 
 export const metadata: Metadata = {
   title: "Blog",
   description: "活動、学びなど"
 };
+
+const posts = getAllPosts();
 
 export default function BlogIndexPage() {
   return (
@@ -30,11 +32,13 @@ export default function BlogIndexPage() {
                   </h2>
                 </header>
                 <p className="blog-card__description">{post.description}</p>
-                <ul className="blog-card__tags" aria-label="タグ">
-                  {post.tags.map((tag) => (
-                    <li key={tag}>#{tag}</li>
-                  ))}
-                </ul>
+                {post.tags.length > 0 && (
+                  <ul className="blog-card__tags" aria-label="タグ">
+                    {post.tags.map((tag) => (
+                      <li key={tag}>#{tag}</li>
+                    ))}
+                  </ul>
+                )}
                 <footer>
                   <Link className="blog-card__link" href={`/blog/${post.slug}`}>
                     記事を読む
