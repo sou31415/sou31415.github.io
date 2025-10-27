@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogPostArticle } from "../_components/BlogPostArticle";
+import {
+  buildBlogPostMetadata,
+  getMissingPostMetadata
+} from "../../../lib/blog/metadata";
 import { getAllPosts, getPostBySlug } from "../../../lib/blog/posts";
 
 type BlogPostPageParams = {
@@ -15,22 +19,10 @@ export function generateMetadata({ params }: { params: BlogPostPageParams }): Me
   const post = getPostBySlug(params.slug);
 
   if (!post) {
-    return {
-      title: "記事が見つかりません",
-      description: "指定されたブログ記事は存在しません。"
-    };
+    return getMissingPostMetadata();
   }
 
-  return {
-    title: post.title,
-    description: post.description,
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: "article",
-      publishedTime: post.date
-    }
-  };
+  return buildBlogPostMetadata(post);
 }
 
 export default function BlogPostPage({ params }: { params: BlogPostPageParams }) {
