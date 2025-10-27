@@ -32,11 +32,13 @@ export default function BlogIndexPage() {
                   </h2>
                 </header>
                 <p className="blog-card__description">{post.description}</p>
-                <ul className="blog-card__tags" aria-label="タグ">
-                  {post.tags.map((tag) => (
-                    <li key={tag}>#{tag}</li>
-                  ))}
-                </ul>
+                {post.tags.length > 0 && (
+                  <ul className="blog-card__tags" aria-label="タグ">
+                    {post.tags.map((tag) => (
+                      <li key={tag}>#{tag}</li>
+                    ))}
+                  </ul>
+                )}
                 <footer>
                   <Link className="blog-card__link" href={`/blog/${post.slug}`}>
                     記事を読む
