@@ -9,10 +9,10 @@ These instructions apply to every file in this repository unless a subdirectory 
 - The `app/` directory uses server components by default. Add the `"use client"` directive only when required by React state, effects, or browser-only APIs.
 
 ## Development workflow
-- Install dependencies with `npm install` and use the bundled npm scripts (`npm run dev`, `npm run lint`, `npm run build`).
+- Install dependencies with `bun install` and use the bundled bun scripts (`bun run dev`, `bun run lint`, `bun run build`).
 - Before opening a pull request, run:
-  - `npm run lint`
-  - `CI=1 npm run build`
+  - `bun run lint`
+  - `CI=1 bun run build`
 - Keep the codebase free of failing TypeScript checks; prefer explicit types for exported APIs and component props.
 - When adding dependencies, ensure they are compatible with Vercel's serverless environment (ESM-friendly, no native binaries unless already supported by Vercel).
 
