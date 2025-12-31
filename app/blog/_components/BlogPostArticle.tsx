@@ -24,11 +24,10 @@ export function BlogPostArticle({ post }: { post: BlogPost }) {
               </ul>
             )}
           </header>
-          <div className="blog-post__body">
-            {post.body.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-          </div>
+          <div
+            className="blog-post__body blog-markdown"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
         </article>
       </main>
     </div>
