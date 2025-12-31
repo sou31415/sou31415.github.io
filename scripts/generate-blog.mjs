@@ -7,9 +7,9 @@ import remarkRehype from "remark-rehype";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 
-const contentDir = path.join(process.cwd(), "content", "blog");
-const outputDir = path.join(contentDir, "generated");
-const overridesPath = path.join(contentDir, "overrides.json");
+const contentDir = path.join(process.cwd(), "content", "blog", "posts");
+const outputDir = path.join(process.cwd(), "content", "blog", "generated");
+const overridesPath = path.join(process.cwd(), "content", "blog", "overrides.json");
 const indexPath = path.join(outputDir, "index.json");
 const postsPath = path.join(outputDir, "posts.json");
 
