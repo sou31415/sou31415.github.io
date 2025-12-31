@@ -44,9 +44,49 @@ function extractTitleAndBody(markdown) {
 }
 
 function estimateReadingTime(text) {
-  const words = text.trim().split(/\s+/).filter(Boolean);
-  const minutes = Math.max(1, Math.ceil(words.length / 200));
+  const trimmed = text.trim();
+  if (!trimmed) {
+    return "1 mins read";
+  }
+
+  const words = trimmed.split(/\s+/).filter(Boolean);
+  const wordMinutes = Math.ceil(words.length / 200);
+  const cjkMatches = trimmed.match(
+    /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/gu
+  );
+  const cjkCount = cjkMatches ? cjkMatches.length : 0;
+  const cjkMinutes = cjkCount ? Math.ceil(cjkCount / 500) : 0;
+  const minutes = Math.max(1, wordMinutes, cjkMinutes);
+
   return `${minutes} mins read`;
+}
+
+function ensureValidDate(date, slug) {
+  if (typeof date !== "string" || date.trim() === "") {
+    throw new Error(`date is required in front matter or overrides: ${slug}.md`);
+  }
+
+  const trimmed = date.trim();
+  const match = trimmed.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) {
+    throw new Error(`date must be YYYY-MM-DD: ${slug}.md (${date})`);
+  }
+
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const normalized = new Date(Date.UTC(year, month - 1, day));
+
+  if (
+    Number.isNaN(normalized.getTime()) ||
+    normalized.getUTCFullYear() !== year ||
+    normalized.getUTCMonth() + 1 !== month ||
+    normalized.getUTCDate() !== day
+  ) {
+    throw new Error(`date is invalid: ${slug}.md (${date})`);
+  }
+
+  return trimmed;
 }
 
 function normalizeTags(tags) {
@@ -138,7 +178,11 @@ async function generate() {
       html
     };
 
-    posts.push(applyOverrides(post, overrides));
+    const withOverrides = applyOverrides(post, overrides);
+    posts.push({
+      ...withOverrides,
+      date: ensureValidDate(withOverrides.date, slug)
+    });
   }
 
   posts.sort((first, second) => {
