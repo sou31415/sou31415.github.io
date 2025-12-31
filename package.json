@@ -3,15 +3,25 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "generate:blog": "node scripts/generate-blog.mjs",
+    "predev": "npm run generate:blog",
     "dev": "next dev",
+    "prebuild": "npm run generate:blog",
     "build": "next build",
     "start": "next start",
+    "prelint": "npm run generate:blog",
     "lint": "next lint"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "next": "14.2.5",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "rehype-sanitize": "^6.0.0",
+    "rehype-stringify": "^10.0.1",
+    "remark": "^15.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2"
   },
   "devDependencies": {
     "@types/node": "20.14.10",

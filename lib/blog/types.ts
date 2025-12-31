@@ -5,5 +5,7 @@ export type BlogPost = {
   date: string;
   readingTime: string;
   tags: string[];
-  body: string[];
+  html: string;
 };
+
+export type BlogPostSummary = Omit<BlogPost, "html">;

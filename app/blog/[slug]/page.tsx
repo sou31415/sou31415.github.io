@@ -1,23 +1,30 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogPostArticle } from "../_components/BlogPostArticle";
-import { resolveBlogPost } from "../../../lib/blog/queries";
-import { getAllPosts } from "../../../lib/blog/posts";
+import { getAllSlugs, getPostBySlug } from "../../../lib/blog";
 
 type BlogPostPageParams = {
   slug: string;
 };
 
 export function generateStaticParams(): BlogPostPageParams[] {
-  return getAllPosts().map((post) => ({ slug: post.slug }));
+  return getAllSlugs().map((slug) => ({ slug }));
 }
 
 export function generateMetadata({ params }: { params: BlogPostPageParams }): Metadata {
-  return resolveBlogPost(params.slug).metadata;
+  const post = getPostBySlug(params.slug);
+  if (!post) {
+    return { title: "Not Found" };
+  }
+
+  return {
+    title: post.title,
+    description: post.description || undefined
+  };
 }
 
 export default function BlogPostPage({ params }: { params: BlogPostPageParams }) {
-  const { post } = resolveBlogPost(params.slug);
+  const post = getPostBySlug(params.slug);
 
   if (!post) {
     notFound();
