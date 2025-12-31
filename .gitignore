@@ -7,3 +7,4 @@ node_modules/
 target/
 bun.lock
 .vercel
+content/blog/generated/
