@@ -34,6 +34,14 @@ After this change, blog posts load faster because Markdown files are converted t
   Rationale: The user requirement specifies the title must come from the first visible heading, so frontmatter is limited to metadata like date and tags.
   Date/Author: 2025-09-27 / Codex
 
+- Decision: Support `content/blog/overrides.json` to override metadata such as date and description at generation time.
+  Rationale: Overrides allow manual edits without touching generated JSON, which is regenerated on each dev/build/lint run.
+  Date/Author: 2025-09-27 / Codex
+
+- Decision: Allow `readingTime` overrides to align with manual estimates.
+  Rationale: Some posts need curated reading time values, so overrides must cover this field too.
+  Date/Author: 2025-09-27 / Codex
+
 ## Outcomes & Retrospective
 
 The blog now renders from prebuilt JSON generated at build time. Markdown lives in `content/blog`, the generator writes JSON to `content/blog/generated`, and both the blog index and detail pages read from those artifacts. Lint passes after running the generator, and the pipeline is ready for adding Markdown content.
@@ -130,3 +138,5 @@ Where `BlogPostSummary` matches the metadata fields returned in `content/blog/ge
 
 Change Log: Initial plan created to support a build-time Markdown pipeline and refactor blog pages to use generated data.
 Change Log: Updated progress, recorded the sandbox write permission discovery, and noted completion of the generator and blog rewiring.
+Change Log: Added overrides.json support to preserve manual metadata edits across regeneration.
+Change Log: Added readingTime override support in the generator.

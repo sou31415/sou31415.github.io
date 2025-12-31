@@ -9,6 +9,7 @@ import rehypeStringify from "rehype-stringify";
 
 const contentDir = path.join(process.cwd(), "content", "blog");
 const outputDir = path.join(contentDir, "generated");
+const overridesPath = path.join(contentDir, "overrides.json");
 const indexPath = path.join(outputDir, "index.json");
 const postsPath = path.join(outputDir, "posts.json");
 
@@ -81,8 +82,42 @@ async function getMarkdownFiles() {
   }
 }
 
+async function readOverrides() {
+  try {
+    const raw = await fs.readFile(overridesPath, "utf8");
+    const data = JSON.parse(raw);
+    if (!data || typeof data !== "object") {
+      throw new Error("overrides.json must be an object keyed by slug.");
+    }
+    return data;
+  } catch (error) {
+    if (error.code === "ENOENT") {
+      return {};
+    }
+    throw error;
+  }
+}
+
+function applyOverrides(post, overrides) {
+  const entry = overrides[post.slug];
+  if (!entry || typeof entry !== "object") {
+    return post;
+  }
+
+  return {
+    ...post,
+    readingTime:
+      typeof entry.readingTime === "string" ? entry.readingTime : post.readingTime,
+    description:
+      typeof entry.description === "string" ? entry.description : post.description,
+    date: typeof entry.date === "string" ? entry.date : post.date,
+    tags: Array.isArray(entry.tags) ? normalizeTags(entry.tags) : post.tags
+  };
+}
+
 async function generate() {
   const files = await getMarkdownFiles();
+  const overrides = await readOverrides();
   const posts = [];
 
   for (const fileName of files) {
@@ -93,7 +128,7 @@ async function generate() {
     const { title, body } = extractTitleAndBody(content);
     const html = await renderMarkdown(body);
 
-    posts.push({
+    const post = {
       slug,
       title: title ?? slug,
       description: typeof data.description === "string" ? data.description : "",
@@ -101,7 +136,9 @@ async function generate() {
       readingTime: estimateReadingTime(body),
       tags: normalizeTags(data.tags),
       html
-    });
+    };
+
+    posts.push(applyOverrides(post, overrides));
   }
 
   posts.sort((first, second) => {
