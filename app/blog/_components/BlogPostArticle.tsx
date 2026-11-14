@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { BlogPost } from "../../../lib/blog/types";
-import { formatPostDate, formatReadingTime } from "../../../lib/blog/presentation";
+import { formatPostDate } from "../../../lib/blog/presentation";
 import { BlogShell } from "./BlogShell";
 
 export function BlogPostArticle({ post }: { post: BlogPost }) {
@@ -12,7 +12,6 @@ export function BlogPostArticle({ post }: { post: BlogPost }) {
           <header className="post-heading">
             <div className="post-details">
               <time className="post-date" dateTime={post.date}>{formatPostDate(post.date)}</time>
-              <span>{formatReadingTime(post.readingTime)}</span>
             </div>
             <h1>{post.title}</h1>
             {post.tags.length > 0 ? (

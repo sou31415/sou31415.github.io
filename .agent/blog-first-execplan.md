@@ -4,14 +4,16 @@ This ExecPlan is a living document maintained according to `.agent/PLANS.md`.
 
 ## Purpose / Big Picture
 
-The root URL should immediately show the author's writing instead of a portfolio. A short introduction is sufficient. Readers should be able to open an article, read it comfortably on a phone or desktop, and return to the list without moving between different visual identities. Keep the author's preference for pale blue, and preserve existing article URLs and Markdown content.
+The root URL should immediately show the author's writing instead of a portfolio. A short introduction is sufficient. Readers should be able to open an article, read it comfortably on a phone or desktop, and return to the list without moving between different visual identities. Keep the author's preference for pale blue, adapt to the device's light or dark preference, and preserve existing article URLs and Markdown content. The list heading is `ぶんしょう`, with no lead paragraph or reading-time labels.
 
 ## Progress
 
 - [x] (2026-11-15) Inspect the current routes, article generation, styles, and repository instructions.
 - [x] (2026-11-15) Build shared blog navigation, list, article presentation, and metadata.
 - [x] (2026-11-15) Pass lint, production build, five production HTTP tests, and browser checks at desktop and phone widths.
-- [x] (2026-11-15) Record results and prepare the verified, scoped changes for the commit `feat: make the site a blog-first reading experience`.
+- [x] (2026-11-15) Record results and commit the initial implementation as `014eb61`.
+- [x] (2026-11-15) Add system dark mode, rename the index heading to `ぶんしょう`, and remove lead and reading-time labels.
+- [x] (2026-11-15) Pass six production tests including light/dark contrast, lint, build, and a live dark-mode browser check.
 
 ## Surprises & Discoveries
 
@@ -25,21 +27,25 @@ The repository has no installed dependencies or existing test runner. Article me
 - Decision: Use a pale blue page, a narrow shared header, typographic article rows, and an unboxed reading column. Keep the existing Japanese font and add no imagery or invented content.
   Rationale: This applies the agreed color preference while prioritizing real writing and minimizing the biography. Photos and hobbies are not a separate feature in this task.
   Date/Author: 2026-11-15, Codex.
-- Decision: Keep the existing article-generation and sanitization pipeline intact. Change reading-time labels only at presentation time.
-  Rationale: The requested change concerns the site entry point and presentation, not content authoring or storage.
+- Decision: Keep the existing article-generation and sanitization pipeline intact. Remove reading-time labels from presentation; generated reading-time metadata may remain unused.
+  Rationale: The user requested removing the visible labels, without changing article storage.
+  Date/Author: 2026-11-15, Codex.
+
+- Decision: Follow `prefers-color-scheme` automatically and keep every theme color in CSS custom properties. Use `ぶんしょう` as the index heading and omit its lead paragraph.
+  Rationale: This implements the requested dark mode and wording without adding a theme control or client-side script.
   Date/Author: 2026-11-15, Codex.
 
 ## Outcomes & Retrospective
 
-The root URL now functions as the blog index. `/blog` shares the same rendering, and both existing article URLs retain their complete generated HTML. Index and article views share pale-blue paper, restrained dividers, header, footer, and typography. Biography content is limited to a short note below the list. No content files or production dependencies changed. All five production HTTP tests pass, and lint and TypeScript checks pass. Browser checks confirmed article navigation, returning to the index, keyboard skip-link focus, and no horizontal overflow at 390px and 1280px viewport widths. The browser console reported no warnings or errors during final production checks. Empty-list and optional-metadata branches were reviewed in source; the live content contains two articles, so those branches were not exercised in the browser.
+The root URL now functions as the blog index. `/blog` shares the same rendering, and both existing article URLs retain their complete generated HTML. Index and article views share pale-blue paper, restrained dividers, header, footer, and typography. Biography content is limited to a short note below the list. No content files or production dependencies changed. All six production tests pass, including checks that both themes retain a text contrast of at least 4.5:1 on reading surfaces. Lint and TypeScript checks pass. The final browser check used the actual system dark preference and confirmed a dark background, readable light text, the `ぶんしょう` heading, and no lead or reading-time labels. Browser checks confirmed article navigation, returning to the index, keyboard skip-link focus, and no horizontal overflow at 390px and 1280px viewport widths. The browser console reported no warnings or errors during final production checks. Empty-list and optional-metadata branches were reviewed in source; the live content contains two articles, so those branches were not exercised in the browser.
 
 ## Context and Orientation
 
-`app/page.tsx` currently renders the portfolio. `app/blog/page.tsx` lists generated posts. `app/blog/[slug]/page.tsx` resolves an article and metadata and delegates to `app/blog/_components/BlogPostArticle.tsx`. `lib/blog/index.ts` supplies sorted article summaries and article HTML from generated JSON. `app/layout.tsx` owns the global font and metadata. `app/globals.css` contains the dark blog design. Legacy static pages in `public/` and `docs/` are outside the change.
+`app/page.tsx` renders the shared blog index. `app/blog/page.tsx` lists generated posts. `app/blog/[slug]/page.tsx` resolves an article and metadata and delegates to `app/blog/_components/BlogPostArticle.tsx`. `lib/blog/index.ts` supplies sorted article summaries and article HTML from generated JSON. `app/layout.tsx` owns the global font and metadata. `app/globals.css` contains shared light and dark blog styles. Legacy static pages in `public/` and `docs/` are outside the change.
 
 ## Plan of Work
 
-Add a shared blog shell and index under `app/blog/_components/`. Both index routes should render the same article list, with titles linking to existing `/blog/{slug}` URLs, machine-readable dates, optional descriptions, and optional tags. The shell should provide a site-name link to `/`, a skip-to-content link, and a small footer identifying the author. Introduce a small formatting module for consistent dates and Japanese reading-time labels. Rewrite the article component to reuse the shell, keep sanitized article HTML, and provide a return-to-index link above and below the text. Update global metadata to describe a personal blog.
+Add a shared blog shell and index under `app/blog/_components/`. Both index routes should render the same article list, with titles linking to existing `/blog/{slug}` URLs, machine-readable dates, optional descriptions, and optional tags. The shell should provide a site-name link to `/`, a skip-to-content link, and a small footer identifying the author. Use the small formatting module for consistent dates. Do not display reading times. Rewrite the article component to reuse the shell, keep sanitized article HTML, and provide a return-to-index link above and below the text. Update global metadata to describe a personal blog.
 
 Replace the existing portfolio and dark-card CSS with shared pale-blue color variables, restrained rules, readable type, visible keyboard focus, and mobile layouts. Keep wide code and tables locally scrollable, and constrain images to the content width. Preserve native link behavior and avoid unnecessary client-side state.
 
@@ -49,7 +55,7 @@ Run commands from `/Users/sotarofurukawa/page`. Install pinned dependencies with
 
 ## Validation and Acceptance
 
-The root URL and `/blog` must show the same real articles in newest-first order and a minimal introduction. An article title must open the corresponding complete article, whose metadata, text, shared header, and return links remain visible. Existing Markdown content must not change. Missing article URLs must return 404. The production build and lint must pass. Focused tests cover rendering both entry routes, retaining all existing article links and body content, Japanese metadata presentation, return navigation, and the missing-article response. Review the empty-list and optional-description/tag branches in source; the current live articles do not exercise them. Visual inspection should show the same pale-blue design across entry and article pages, with no page-wide horizontal scrolling on phones.
+The root URL and `/blog` must show the same real articles in newest-first order, under `ぶんしょう` without a lead paragraph. Neither the list nor article header displays reading time. An article title must open the corresponding complete article, whose metadata, text, shared header, and return links remain visible. Existing Markdown content must not change. Missing article URLs must return 404. The production build and lint must pass. Focused tests cover rendering both entry routes, retaining all existing article links and body content, date presentation, removed reading-time labels, return navigation, the missing-article response, and readable theme contrast. Review the empty-list and optional-description/tag branches in source; the current live articles do not exercise them. Visual inspection should show the same pale-blue design across entry and article pages, with no page-wide horizontal scrolling on phones.
 
 ## Idempotence and Recovery
 
@@ -75,3 +81,5 @@ Continue using Next.js 14, React 18, TypeScript, the existing `BlogPost` and `Bl
 Revision note (2026-11-15): Created the plan for the user's revised blog-first scope and agreed pale-blue direction.
 
 Revision note (2026-11-15): Recorded the completed implementation, exact verification results, visual evidence, and the limits of empty-state verification.
+
+Revision note (2026-11-15): Applied the requested system dark theme and wording refinements. `npm run lint` and `npm run test:blog` passed (6 tests); browser inspection confirmed live dark styling on the index and article, no console errors, and no horizontal overflow. The dark index screenshot is `/tmp/page-blog-review/home-dark.jpg`.

@@ -10,6 +10,28 @@
   --blue: #236887;
   --rule: #c9e1ec;
   --wash: #dceff7;
+  --accent: #b6dfef;
+  --selection: #c2e4f4;
+  --link-underline: #80b8d0;
+  --quote-rule: #a6cfdf;
+  --code-paper: #e8f2f6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #101b22;
+    --ink: #dbeaf1;
+    --muted: #9aafbc;
+    --blue: #8acbe7;
+    --rule: #2a424f;
+    --wash: #243b48;
+    --accent: #3e7086;
+    --selection: #335d72;
+    --link-underline: #7cbcd8;
+    --quote-rule: #4b7c91;
+    --code-paper: #182c36;
+  }
 }
 
 body {
@@ -19,11 +41,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-::selection { background: #c2e4f4; color: var(--ink); }
+::selection { background: var(--selection); color: var(--ink); }
 a { text-underline-offset: 0.25em; text-decoration-thickness: 1px; }
 a:focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; border-radius: 2px; }
 
-.blog-site { min-height: 100svh; border-top: 5px solid #b6dfef; }
+.blog-site { min-height: 100svh; border-top: 5px solid var(--accent); }
 
 .site-header,
 .site-footer,
@@ -54,7 +76,7 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; border-ra
   z-index: 50;
   padding: 0.75rem 1rem;
   background: var(--ink);
-  color: white;
+  color: var(--paper);
   transform: translateY(-200%);
 }
 
@@ -66,13 +88,6 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; border-ra
   font-weight: 500;
   letter-spacing: -0.025em;
   line-height: 1.3;
-}
-
-.index-heading p {
-  margin-top: 1rem;
-  color: var(--muted);
-  font-size: 0.875rem;
-  line-height: 1.9;
 }
 
 .post-list { border-top: 1px solid var(--rule); list-style: none; }
@@ -103,7 +118,7 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; border-ra
 .post-row h2 a:hover {
   color: var(--blue);
   text-decoration: underline;
-  text-decoration-color: #80b8d0;
+  text-decoration-color: var(--link-underline);
 }
 
 .post-description {
@@ -124,14 +139,14 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; border-ra
   line-height: 1.9;
 }
 
-.post-row .post-details { margin-top: 0.6rem; }
+.post-row .post-tags { margin-top: 0.6rem; }
 .post-tags { list-style: none; color: var(--blue); overflow-wrap: anywhere; }
 .empty-posts { padding-block: 2.5rem; border-block: 1px solid var(--rule); color: var(--muted); }
 
 .author-note {
   margin-block: 3.5rem 5rem;
   padding-left: 1rem;
-  border-left: 2px solid #b6dfef;
+  border-left: 2px solid var(--accent);
   color: var(--muted);
   font-size: 0.8125rem;
   line-height: 2;
@@ -202,7 +217,7 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; border-ra
 .blog-markdown a:hover { text-decoration-thickness: 2px; }
 .blog-markdown img { max-width: 100%; height: auto; margin-inline: auto; }
 .blog-markdown hr { border: 0; border-top: 1px solid var(--rule); margin-block: 3rem; }
-.blog-markdown blockquote { border-left: 2px solid #a6cfdf; padding-left: 1.25rem; color: var(--muted); }
+.blog-markdown blockquote { border-left: 2px solid var(--quote-rule); padding-left: 1.25rem; color: var(--muted); }
 .blog-markdown blockquote > * + * { margin-top: 1rem; }
 
 .blog-markdown code {
@@ -216,7 +231,7 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; border-ra
   max-width: 100%;
   overflow-x: auto;
   padding: 1.25rem;
-  background: #e8f2f6;
+  background: var(--code-paper);
   font-size: 0.875rem;
   line-height: 1.8;
   overflow-wrap: normal;

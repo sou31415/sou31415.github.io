@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { BlogPostSummary } from "../../../lib/blog";
-import { formatPostDate, formatReadingTime } from "../../../lib/blog/presentation";
+import { formatPostDate } from "../../../lib/blog/presentation";
 import { BlogShell } from "./BlogShell";
 
 export function BlogIndex({ posts }: { posts: BlogPostSummary[] }) {
@@ -8,8 +8,7 @@ export function BlogIndex({ posts }: { posts: BlogPostSummary[] }) {
     <BlogShell>
       <main id="main-content" className="blog-index" tabIndex={-1}>
         <header className="index-heading">
-          <h1>Blog</h1>
-          <p>活動、学び、考えたことを書いています。</p>
+          <h1>ぶんしょう</h1>
         </header>
         <section aria-label="記事一覧">
           {posts.length > 0 ? (
@@ -25,14 +24,11 @@ export function BlogIndex({ posts }: { posts: BlogPostSummary[] }) {
                         <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                       </h2>
                       {post.description ? <p className="post-description">{post.description}</p> : null}
-                      <div className="post-details">
-                        <span>{formatReadingTime(post.readingTime)}</span>
-                        {post.tags.length > 0 ? (
-                          <ul className="post-tags" aria-label="タグ">
-                            {post.tags.map((tag) => <li key={tag}>#{tag}</li>)}
-                          </ul>
-                        ) : null}
-                      </div>
+                      {post.tags.length > 0 ? (
+                        <ul className="post-tags" aria-label="タグ">
+                          {post.tags.map((tag) => <li key={tag}>#{tag}</li>)}
+                        </ul>
+                      ) : null}
                     </div>
                   </article>
                 </li>
