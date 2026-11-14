@@ -118,7 +118,9 @@ test("unknown article returns HTTP 404", async () => {
 });
 
 function luminance(hex) {
-  const channels = hex.slice(1).match(/../g).map((channel) => {
+  assert.match(hex, /^#(?:[\da-f]{3}|[\da-f]{6})$/i);
+  const normalized = hex.length === 4 ? hex.slice(1).split("").map((digit) => digit.repeat(2)).join("") : hex.slice(1);
+  const channels = normalized.match(/../g).map((channel) => {
     const value = parseInt(channel, 16) / 255;
     return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
   });

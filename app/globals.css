@@ -20,17 +20,17 @@
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    --paper: #101b22;
-    --ink: #dbeaf1;
-    --muted: #9aafbc;
-    --blue: #8acbe7;
-    --rule: #2a424f;
-    --wash: #243b48;
-    --accent: #3e7086;
-    --selection: #335d72;
-    --link-underline: #7cbcd8;
-    --quote-rule: #4b7c91;
-    --code-paper: #182c36;
+    --paper: #181818;
+    --ink: #dedede;
+    --muted: #a0a0a0;
+    --blue: #a6c4d1;
+    --rule: #343434;
+    --wash: #282828;
+    --accent: #414141;
+    --selection: #3a3a3a;
+    --link-underline: #8da8b3;
+    --quote-rule: #555555;
+    --code-paper: #222222;
   }
 }
 
