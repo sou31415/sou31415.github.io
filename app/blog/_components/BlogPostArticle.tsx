@@ -1,35 +1,32 @@
 import Link from "next/link";
 import type { BlogPost } from "../../../lib/blog/types";
+import { formatPostDate, formatReadingTime } from "../../../lib/blog/presentation";
+import { BlogShell } from "./BlogShell";
 
 export function BlogPostArticle({ post }: { post: BlogPost }) {
   return (
-    <div className="blog-page">
-      <main className="blog-post">
-        <Link className="blog-post__back" href="/blog">
-          ← 記事一覧に戻る
-        </Link>
+    <BlogShell>
+      <main id="main-content" className="blog-post" tabIndex={-1}>
+        <Link className="back-link" href="/">← 記事一覧</Link>
         <article>
-          <header className="blog-post__header">
-            <p className="blog-post__meta">
-              <time dateTime={post.date}>{post.date}</time>
-              <span aria-hidden="true">・</span>
-              <span>{post.readingTime}</span>
-            </p>
+          <header className="post-heading">
+            <div className="post-details">
+              <time className="post-date" dateTime={post.date}>{formatPostDate(post.date)}</time>
+              <span>{formatReadingTime(post.readingTime)}</span>
+            </div>
             <h1>{post.title}</h1>
-            {post.tags.length > 0 && (
-              <ul className="blog-post__tags" aria-label="タグ">
-                {post.tags.map((tag) => (
-                  <li key={tag}>#{tag}</li>
-                ))}
+            {post.tags.length > 0 ? (
+              <ul className="post-tags" aria-label="タグ">
+                {post.tags.map((tag) => <li key={tag}>#{tag}</li>)}
               </ul>
-            )}
+            ) : null}
           </header>
-          <div
-            className="blog-post__body blog-markdown"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          <div className="blog-markdown" dangerouslySetInnerHTML={{ __html: post.html }} />
         </article>
+        <footer className="post-footer">
+          <Link className="back-link" href="/">← 記事一覧に戻る</Link>
+        </footer>
       </main>
-    </div>
+    </BlogShell>
   );
 }
