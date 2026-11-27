@@ -11,7 +11,7 @@
     "start": "next start",
     "prelint": "npm run generate:blog",
     "lint": "next lint",
-    "test:blog": "npm run build && node --test tests/blog.test.mjs"
+    "test:blog": "npm run build && node --test tests/*.test.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

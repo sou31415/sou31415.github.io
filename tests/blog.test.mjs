@@ -4,12 +4,16 @@ import { once } from "node:events";
 import fs from "node:fs/promises";
 import net from "node:net";
 import { after, before, test } from "node:test";
+import { fileURLToPath } from "node:url";
 import postcss from "postcss";
 
 let server;
 let baseUrl;
 let serverOutput = "";
 const posts = JSON.parse(await fs.readFile(new URL("../content/blog/generated/posts.json", import.meta.url)));
+const clock = fileURLToPath(new URL("./helpers/blog-clock.cjs", import.meta.url));
+const nineHours = 9 * 60 * 60 * 1000;
+const publishedPosts = posts.filter((post) => Date.parse(post.date) - nineHours <= Date.now());
 
 before(async () => {
   const portReservation = net.createServer();
@@ -18,8 +22,8 @@ before(async () => {
   const { port } = portReservation.address();
   await new Promise((resolve) => portReservation.close(resolve));
   baseUrl = `http://127.0.0.1:${port}`;
-  server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "--hostname", "127.0.0.1", "--port", String(port)], {
-    stdio: ["ignore", "pipe", "pipe"]
+  server = spawn(process.execPath, ["--require", clock, "node_modules/next/dist/bin/next", "start", "--hostname", "127.0.0.1", "--port", String(port)], {
+    stdio: ["ignore", "pipe", "pipe", "ipc"]
   });
   for (const stream of [server.stdout, server.stderr]) {
     stream.on("data", (chunk) => { serverOutput += chunk; });
@@ -60,7 +64,11 @@ function escapeHtml(value) {
   return value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("'", "&#x27;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 }
 
-test("home is a blog index with all real articles in generated order", async () => {
+function articlePathFor(slug) {
+  return `/blog/${slug.split("/").map(encodeURIComponent).join("/")}`;
+}
+
+test("home is a blog index with all published articles in generated order", async () => {
   const html = await getHtml("/");
   const main = mainContent(html);
   assert.match(main, /<h1>ぶんしょう<\/h1>/);
@@ -70,8 +78,8 @@ test("home is a blog index with all real articles in generated order", async () 
   assert.doesNotMatch(main, /\d+分で読めます|mins? read/);
   assert.doesNotMatch(main, /スキルレベル|Apple Japan|改修工事中/);
   let previousIndex = -1;
-  for (const post of posts) {
-    const index = main.indexOf(`href="/blog/${post.slug}"`);
+  for (const post of publishedPosts) {
+    const index = main.indexOf(`href="${escapeHtml(articlePathFor(post.slug))}"`);
     assert.ok(index > previousIndex, `${post.title} is linked in chronological order`);
     assert.ok(main.includes(escapeHtml(post.title)));
     assert.ok(main.includes(`dateTime="${post.date}"`));
@@ -87,9 +95,9 @@ test("legacy blog index shows exactly the same content as home", async () => {
   assert.equal(mainContent(blog), mainContent(home));
 });
 
-test("every existing article preserves its complete generated HTML and metadata", async () => {
-  for (const post of posts) {
-    const html = await getHtml(`/blog/${post.slug}`);
+test("every published article preserves its complete generated HTML and metadata", async () => {
+  for (const post of publishedPosts) {
+    const html = await getHtml(articlePathFor(post.slug));
     const main = mainContent(html);
     assert.ok(main.includes(post.html), `${post.slug} preserves its complete sanitized article`);
     assert.ok(main.includes(`<h1>${escapeHtml(post.title)}</h1>`));
@@ -101,8 +109,8 @@ test("every existing article preserves its complete generated HTML and metadata"
 });
 
 test("articles have return links before and after the text plus shared navigation", async () => {
-  for (const post of posts) {
-    const html = await getHtml(`/blog/${post.slug}`);
+  for (const post of publishedPosts) {
+    const html = await getHtml(articlePathFor(post.slug));
     const main = mainContent(html);
     assert.match(main, /href="\/">← 記事一覧<\/a>/);
     assert.match(main, /href="\/">← 記事一覧に戻る<\/a>/);
@@ -113,8 +121,58 @@ test("articles have return links before and after the text plus shared navigatio
 });
 
 test("unknown article returns HTTP 404", async () => {
-  const response = await fetch(`${baseUrl}/blog/this-article-does-not-exist`);
-  assert.equal(response.status, 404);
+  for (const slug of ["this-article-does-not-exist", "notes/missing/article"]) {
+    const response = await fetch(`${baseUrl}${articlePathFor(slug)}`);
+    assert.equal(response.status, 404);
+  }
+});
+
+async function setServerTime(blogTime) {
+  const reply = once(server, "message", { signal: AbortSignal.timeout(5_000) });
+  server.send({ blogTime });
+  const [message] = await reply;
+  assert.deepEqual(message, { blogTime });
+}
+
+test("a post becomes public at midnight JST without a rebuild or server restart", async () => {
+  const [post] = posts;
+  assert.ok(post, "At least one article is required to test publication");
+  const articlePath = articlePathFor(post.slug);
+  const articleTitle = `<title>${escapeHtml(post.title)} | sou31415 / blog</title>`;
+  const paths = ["/", "/blog", articlePath];
+  const midnightInJapan = Date.parse(post.date) - nineHours;
+
+  async function requestPages() {
+    return Promise.all(paths.map(async (path) => {
+      const response = await fetch(`${baseUrl}${path}`);
+      assert.match(response.headers.get("cache-control") ?? "", /\bno-store\b/, path);
+      return { status: response.status, html: await response.text() };
+    }));
+  }
+
+  try {
+    await setServerTime(midnightInJapan - 1);
+    const [homeBefore, blogBefore, articleBefore] = await requestPages();
+    for (const page of [homeBefore, blogBefore]) {
+      assert.equal(page.status, 200);
+      assert.ok(!page.html.includes(`href="${escapeHtml(articlePath)}"`), "The article is absent from the list");
+    }
+    assert.equal(articleBefore.status, 404);
+    assert.ok(!articleBefore.html.includes(articleTitle), "No article title in the hidden response");
+    assert.ok(!articleBefore.html.includes('class="blog-markdown"'), "No article body in the hidden response");
+
+    await setServerTime(midnightInJapan);
+    const [homeAfter, blogAfter, articleAfter] = await requestPages();
+    for (const page of [homeAfter, blogAfter]) {
+      assert.equal(page.status, 200);
+      assert.ok(page.html.includes(`href="${escapeHtml(articlePath)}"`));
+    }
+    assert.equal(articleAfter.status, 200);
+    assert.ok(articleAfter.html.includes(articleTitle));
+    assert.ok(articleAfter.html.includes(post.html));
+  } finally {
+    await setServerTime(null);
+  }
 });
 
 function luminance(hex) {
