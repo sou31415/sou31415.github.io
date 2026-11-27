@@ -13,6 +13,15 @@ const overridesPath = path.join(process.cwd(), "content", "blog", "overrides.jso
 const indexPath = path.join(outputDir, "index.json");
 const postsPath = path.join(outputDir, "posts.json");
 
+const frontMatterOptions = {
+  engines: {
+    yaml: (frontMatter) => matter.engines.yaml.parse(
+      // Accept the compact `status:pending` form in the metadata block.
+      frontMatter.replace(/^status:(?=\S)/gm, "status: ")
+    )
+  }
+};
+
 function extractTitleAndBody(markdown) {
   const lines = markdown.split(/\r?\n/);
   let title = null;
@@ -107,19 +116,18 @@ async function renderMarkdown(markdown) {
   return processed.toString();
 }
 
-async function getMarkdownFiles() {
-  try {
-    const entries = await fs.readdir(contentDir, { withFileTypes: true });
-    return entries
-      .filter((entry) => entry.isFile() && path.extname(entry.name) === ".md")
-      .map((entry) => entry.name);
-  } catch (error) {
-    if (error.code === "ENOENT") {
-      await fs.mkdir(contentDir, { recursive: true });
-      return [];
+async function getMarkdownFiles(directory) {
+  const entries = await fs.readdir(directory, { withFileTypes: true });
+  const files = [];
+  for (const entry of entries) {
+    const filePath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...await getMarkdownFiles(filePath));
+    } else if (entry.isFile() && path.extname(entry.name) === ".md") {
+      files.push(filePath);
     }
-    throw error;
   }
+  return files;
 }
 
 async function readOverrides() {
@@ -156,21 +164,27 @@ function applyOverrides(post, overrides) {
 }
 
 async function generate() {
-  const files = await getMarkdownFiles();
+  await fs.mkdir(contentDir, { recursive: true });
+  const files = await getMarkdownFiles(contentDir);
   const overrides = await readOverrides();
   const posts = [];
 
-  for (const fileName of files) {
-    const slug = path.basename(fileName, ".md");
-    const filePath = path.join(contentDir, fileName);
+  for (const filePath of files) {
+    const relativeFilePath = path.relative(contentDir, filePath).split(path.sep).join("/");
+    const slug = relativeFilePath.slice(0, -".md".length);
     const raw = await fs.readFile(filePath, "utf8");
-    const { data, content } = matter(raw);
+    const { data, content } = matter(raw, frontMatterOptions);
+    const status = data.status === undefined ? "ready" : data.status;
+    if (status === "pending") continue;
+    if (status !== "ready") {
+      throw new Error(`status must be pending or ready: ${relativeFilePath}`);
+    }
     const { title, body } = extractTitleAndBody(content);
     const html = await renderMarkdown(body);
 
     const post = {
       slug,
-      title: title ?? slug,
+      title: title ?? path.basename(filePath, ".md"),
       description: typeof data.description === "string" ? data.description : "",
       date: typeof data.date === "string" ? data.date : "",
       readingTime: estimateReadingTime(body),

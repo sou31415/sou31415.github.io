@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { BlogPostSummary } from "../../../lib/blog";
-import { formatPostDate } from "../../../lib/blog/presentation";
+import { blogPostHref, formatPostDate } from "../../../lib/blog/presentation";
 import { BlogShell } from "./BlogShell";
 
 export function BlogIndex({ posts }: { posts: BlogPostSummary[] }) {
@@ -21,7 +21,7 @@ export function BlogIndex({ posts }: { posts: BlogPostSummary[] }) {
                     </time>
                     <div className="post-row__content">
                       <h2>
-                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                        <Link href={blogPostHref(post.slug)}>{post.title}</Link>
                       </h2>
                       {post.description ? <p className="post-description">{post.description}</p> : null}
                       {post.tags.length > 0 ? (
